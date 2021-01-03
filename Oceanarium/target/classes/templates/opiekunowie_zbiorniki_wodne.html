@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/html"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>WaterTankKeeper Manager App</title>
+</head>
+<body>
+
+	<div align="center">
+		<!-- Page header -->
+		<h1>WaterTankKeepers</h1>
+
+
+		<!-- Entry to a new page -->
+		<a href="/newWaterTankKeeper">Enter new sale</a>
+
+		<!-- Table -->
+		<table border="1" cellpadding="10">
+
+			<!-- Table header -->
+			<thead>
+				<tr>
+					<th>Nr_pracownika</th>
+					<th>nr_zbiornika</th>
+					<th>Akcja</th>
+				</tr>
+			</thead>
+
+			<!-- Table body -->
+			<tbody>
+
+				<tr th:each="waterTankKeeper:${listWaterTankKeeper}">
+					<td th:text="${waterTankKeeper.nr_pracownika}">Nr_pracownika</td>
+					<td th:text="${waterTankKeeper.nr_zbiornika}">nr_zbiornika</td>
+				</tr>
+
+			</tbody>
+
+
+
+		</table>
+
+
+
+
+
+	</div>
+
+</body>
+</html>

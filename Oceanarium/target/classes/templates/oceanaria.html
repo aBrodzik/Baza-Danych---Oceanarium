@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/html"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Oceanarium Manager App</title>
+</head>
+<body>
+
+	<div align="center">
+		<!-- Page header -->
+		<h1>Oceanaria</h1>
+
+
+		<!-- Entry to a new page -->
+		<a href="/newOceanarium">Enter new oceanarium</a>
+
+		<!-- Table -->
+		<table border="1" cellpadding="10">
+
+			<!-- Table header -->
+			<thead>
+				<tr>
+					<th>Nr_oceanarium</th>
+					<th>nazwa</th>
+					<th>Nr_adresu</th>
+					<th>Akcja</th>
+				</tr>
+			</thead>
+
+			<!-- Table body -->
+			<tbody>
+
+				<tr th:each="oceanarium:${listOceanarium}">
+					<td th:text="${oceanarium.nr_oceanarium}">Nr_oceanarium</td>
+					<td th:text="${oceanarium.nazwa}">nazwa</td>
+					<td th:text="${oceanarium.nr_adresu}">Nr_adresu</td>
+				</tr>
+
+			</tbody>
+
+
+
+		</table>
+
+
+
+
+
+	</div>
+
+</body>
+</html>

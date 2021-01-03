@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/html"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Adresses Manager App</title>
+</head>
+<body>
+
+	<div align="center">
+		<!-- Page header -->
+		<h1>Adresses</h1>
+
+
+		<!-- Entry to a new page -->
+		<a href="/newAdress">Enter new sale</a>
+
+		<!-- Table -->
+		<table border="1" cellpadding="10">
+
+			<!-- Table header -->
+			<thead>
+				<tr>
+					<th>Nr_adresu</th>
+					<th>Miasto</th>
+					<th>Ulica</th>
+					<th>Nr_lokalu</th>
+					<th>Nr_poczty</th>
+					<th>Akcja</th>
+				</tr>
+			</thead>
+
+			<!-- Table body -->
+			<tbody>
+
+				<tr th:each="adress:${listAdress}">
+				<td th:text="${adress.nr_adresu}">Nr_adresu</td>
+				<td th:text="${adress.miasto}">Miasto</td>
+				<td th:text="${adress.ulica}">Ulica</td>
+				<td th:text="${adress.nr_lokalu}">Nr_lokalu</td>
+				<td th:text="${adress.nr_poczty}">Nr_poczty</td>
+			</tr>
+
+			</tbody>
+
+
+
+		</table>
+
+
+
+
+
+	</div>
+
+</body>
+</html>

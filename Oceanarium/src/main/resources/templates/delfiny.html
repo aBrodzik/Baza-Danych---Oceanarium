@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/html"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Dolphins Manager App</title>
+</head>
+<body>
+
+	<div align="center">
+		<!-- Page header -->
+		<h1>Dolphins</h1>
+
+
+		<!-- Entry to a new page -->
+		<a href="/newDolphin">Enter new dolphin</a>
+
+		<!-- Table -->
+		<table border="1" cellpadding="10">
+
+			<!-- Table header -->
+			<thead>
+				<tr>
+					<th>Nr_zwierzecia</th>
+					<th>Ilosc_w_zbiorniku</th>
+					<th>Interakcja_z_klientem</th>
+					<th>Czy_wystepy</th>
+					<th>Akcja</th>
+				</tr>
+			</thead>
+
+			<!-- Table body -->
+			<tbody>
+
+				<tr th:each="dolphin:${listDolphin}">
+					<td th:text="${dolphin.nr_zwierzecia}">Nr_zwierzecia</td>
+					<td th:text="${dolphin.ilosc_w_zbiorniku}">Ilosc_w_zbiorniku</td>
+					<td th:text="${dolphin.interakcja_z_klientam}">Interakcja_z_klientem</td>
+					<td th:text="${dolphin.czy_wystepy}">Czy_wystepy</td>
+
+				</tr>
+
+			</tbody>
+
+
+
+		</table>
+
+
+
+
+
+	</div>
+
+</body>
+</html>

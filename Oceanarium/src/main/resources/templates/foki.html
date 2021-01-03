@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/html"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Seals Manager App</title>
+</head>
+<body>
+
+	<div align="center">
+		<!-- Page header -->
+		<h1>Seals</h1>
+
+
+		<!-- Entry to a new page -->
+		<a href="/newSeal">Enter new seal</a>
+
+		<!-- Table -->
+		<table border="1" cellpadding="10">
+
+			<!-- Table header -->
+			<thead>
+				<tr>
+					<th>Nr_zwierzecia</th>
+					<th>Czy_wystepy</th>
+					<th>Ilosc_w_zbiorniku</th>
+					<th>Akcja</th>
+				</tr>
+			</thead>
+
+			<!-- Table body -->
+			<tbody>
+
+				<tr th:each="seal:${listSeal}">
+					<td th:text="${seal.nr_zwierzecia}">Nr_zwierzecia</td>
+					<td th:text="${seal.czy_wystepy}">Czy_wystepy</td>
+					<td th:text="${seal.ilosc_w_zbiorniku}">Ilosc_w_zbiorniku</td>
+
+
+				</tr>
+
+			</tbody>
+
+
+
+		</table>
+
+
+
+
+
+	</div>
+
+</body>
+</html>

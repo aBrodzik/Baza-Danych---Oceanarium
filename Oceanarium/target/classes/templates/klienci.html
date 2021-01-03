@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/html"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Clients Manager App</title>
+</head>
+<body>
+
+	<div align="center">
+		<!-- Page header -->
+		<h1>Clients</h1>
+
+
+		<!-- Entry to a new page -->
+		<a href="/newClient">Enter new client</a>
+
+		<!-- Table -->
+		<table border="1" cellpadding="10">
+
+			<!-- Table header -->
+			<thead>
+				<tr>
+					<th>imie</th>
+					<th>nazwisko</th>
+					<th>nr_telefonu</th>
+					<th>plec</th>
+					<th>data_urodzenia</th>
+					<th>nr_oceanarium</th>
+					<th>nr_adresu</th>
+					<th>akcja</th>
+				</tr>
+			</thead>
+
+			<!-- Table body -->
+			<tbody>
+
+				<tr th:each="client:${listClient}">
+				<td th:text="${client.imie}">imie</td>
+				<td th:text="${client.nazwisko}">nazwisko</td>
+				<td th:text="${client.nr_telefonu}">nr_telefonu</td>
+				<td th:text="${client.plec}">plec</td>
+				<td th:text="${client.data_urodzenia}">data_urodzenia</td>
+				<td th:text="${client.nr_oceanarium}">nr_oceanarium</td>
+				<td th:text="${client.nr_adresu}">nr_adresu</td>
+			</tr>
+
+			</tbody>
+
+
+
+		</table>
+
+
+
+
+
+	</div>
+
+</body>
+</html>

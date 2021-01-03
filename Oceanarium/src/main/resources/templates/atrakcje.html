@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/html"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Attraction Manager App</title>
+</head>
+<body>
+
+	<div align="center">
+		<!-- Page header -->
+		<h1>Attractions</h1>
+
+
+		<!-- Entry to a new page -->
+		<a href="/newAttraction">Enter new attraction</a>
+
+		<!-- Table -->
+		<table border="1" cellpadding="10">
+
+			<!-- Table header -->
+			<thead>
+				<tr>
+					<th>Nr_atrakcji</th>
+					<th>nazwa</th>
+					<th>opis</th>
+					<th>Nr_oceanarium</th>
+					<th>Akcja</th>
+				</tr>
+			</thead>
+
+			<!-- Table body -->
+			<tbody>
+
+				<tr th:each="attraction:${listAttraction}">
+				<td th:text="${attraction.nr_atrakcji}">Nr_atrakcji</td>
+				<td th:text="${attraction.nazwa}">nazwa</td>
+				<td th:text="${attraction.opis}">opis</td>
+				<td th:text="${attraction.nr_oceanarium}">Nr_oceanarium</td>
+			</tr>
+
+			</tbody>
+
+
+
+		</table>
+
+
+
+
+
+	</div>
+
+</body>
+</html>

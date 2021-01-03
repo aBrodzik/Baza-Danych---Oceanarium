@@ -3,52 +3,38 @@
 	xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8">
-<title>Adresses Manager App</title>
+<title>Oceanarium app manager</title>
 </head>
 <body>
 
 	<div align="center">
 		<!-- Page header -->
-		<h1>Adresses</h1>
-
+		<h1>Choose</h1>
 
 		<!-- Entry to a new page -->
-		<a href="/new">Enter new sale</a>
-
-		<!-- Table -->
-		<table border="1" cellpadding="10">
-
-			<!-- Table header -->
-			<thead>
-				<tr>
-					<th>Nr_adresu</th>
-					<th>Miasto</th>
-					<th>Ulica</th>
-					<th>Nr_lokalu</th>
-					<th>Nr_poczty</th>
-					<th>Akcja</th>
-				</tr>
-			</thead>
-
-			<!-- Table body -->
-			<tbody>
-
-				<tr th:each="adress:${listAdress}">
-				<td th:text="${adress.nr_adresu}">Nr_adresu</td>
-				<td th:text="${adress.miasto}">Miasto</td>
-				<td th:text="${adress.ulica}">Ulica</td>
-				<td th:text="${adress.nr_lokalu}">Nr_lokalu</td>
-				<td th:text="${adress.nr_poczty}">Nr_poczty</td>
-			</tr>
-
-			</tbody>
-
-
-
-		</table>
-
-
-
+		<a href="/adresy"> Adresy</a>
+		
+		<!-- Entry to a new page -->
+		<a href="/atrakcje">Atrakcje</a>
+		
+		<!-- Entry to a new page -->
+		<a href="/delfiny">Delfiny</a>
+		
+		<!-- Entry to a new page -->
+		<a href="/foki">Foki</a>
+		
+		<!-- Entry to a new page -->
+		<a href="/klienci">Klienci</a>
+		
+		<!-- Entry to a new page -->
+		<a href="/oceanaria">Oceanaria</a>
+		
+		<!-- Entry to a new page -->
+		<a href="/opiekunowie_zbiorniki_wodne">Opiekunowie_zbiorniki_wodne</a>
+		
+		<!-- Entry to a new page -->
+		<a href="/poczty">Poczty</a>
+		
 
 
 	</div>
