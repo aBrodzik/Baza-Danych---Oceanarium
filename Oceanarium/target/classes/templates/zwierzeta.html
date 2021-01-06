@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/html"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Animal Manager App</title>
+</head>
+<body>
+
+	<div align="center">
+		<!-- Page header -->
+		<h1>Animals</h1>
+
+
+		<!-- Entry to a new page -->
+		<a href="/newAnimal ">Enter new animal </a>
+
+		<!-- Table -->
+		<table border="1" cellpadding="10">
+
+			<!-- Table header -->
+			<thead>
+				<tr>
+					<th>Nr_zwierzecia</th>
+					<th>Nazwa_gatunkowa</th>
+					<th>Wiek</th>
+					<th>Czy_drapiezne</th>
+					<th>Imie</th>
+					<th>Waga</th>
+					<th>Nr_zbiornika</th>
+					<th>Nr_oceanarium</th>
+					<th>Akcja</th>
+					
+					
+				</tr>
+			</thead>
+
+			<!-- Table body -->
+			<tbody>
+
+				<tr th:each="animal:${listAnimal}">
+					<td th:text="${animal.nr_zwierzecia}">Nr_zwierzecia</td>
+					<td th:text="${animal.nazwa_gatunkowa}">Nazwa_gatunkowa</td>
+					<td th:text="${animal.wiek}">Wiek</td>
+					<td th:text="${animal.czy_drapiezne}">Czy_drapiezne</td>
+					<td th:text="${animal.imie}">Imie</td>
+					<td th:text="${animal.waga}">Waga</td>
+					<td th:text="${animal.nr_zbiornika}">Nr_zbiornika</td>
+					<td th:text="${animal.nr_oceanarium}">Nr_oceanarium</td>
+					
+					
+
+
+
+				</tr>
+
+			</tbody>
+
+
+
+		</table>
+
+
+
+
+
+	</div>
+
+</body>
+</html>
