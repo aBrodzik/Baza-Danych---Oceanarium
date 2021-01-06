@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/html"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Position Manager App</title>
+</head>
+<body>
+
+	<div align="center">
+		<!-- Page header -->
+		<h1>Positions</h1>
+
+
+		<!-- Entry to a new page -->
+		<a href="/newPosition">Enter new position</a>
+
+		<!-- Table -->
+		<table border="1" cellpadding="10">
+
+			<!-- Table header -->
+			<thead>
+				<tr>
+					<th>Nr_stanowiska</th>
+					<th>Nazwa_stanowiska</th>
+					<th>Opis</th>
+					<th>Akcja</th>
+					
+					
+				</tr>
+			</thead>
+
+			<!-- Table body -->
+			<tbody>
+
+				<tr th:each="position:${listPosition}">
+					<td th:text="${position.nr_stanowiska}">Nr_stanowiska</td>
+					<td th:text="${position.nazwa_stanowiska}">Nazwa_stanowiska</td>
+					<td th:text="${position.opis}">Opis</td>
+					
+					
+
+
+
+				</tr>
+
+			</tbody>
+
+
+
+		</table>
+
+
+
+
+
+	</div>
+
+</body>
+</html>
