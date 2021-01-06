@@ -28,6 +28,24 @@ public class AppController {
 	private WaterTankKeeperDAO daoWaterTankKeeper;
 	@Autowired
 	private PostDAO daoPost;
+	@Autowired
+	private EmployeeDAO daoEmployee;
+	@Autowired
+	private ImplementationDAO daoImplementation;
+	@Autowired
+	private SharkDAO daoShark;
+	@Autowired
+	private PositionDAO daoPosition;
+	@Autowired
+	private TransactionDAO daoTransaction;
+	@Autowired
+	private PaymentDAO daoPayment;
+	@Autowired
+	private WaterTankDAO daoWaterTank;
+	@Autowired
+	private WaterTankImplementationDAO daoWaterTankImplementation;
+	@Autowired
+	private AnimalDAO daoAnimal;
 
 	@RequestMapping("/")
 	public String viewHomePage() {
@@ -246,6 +264,239 @@ public class AppController {
 	@RequestMapping(value = "/savePost", method = RequestMethod.POST)
 	public String savePost(@ModelAttribute("post") Post post) {
 		daoPost.save(post);
+		return "redirect:/";
+
+	}
+
+	@RequestMapping("/pracownicy")
+	public String viewPracownicy(Model model) {
+
+		List<Employee> listEmployee = daoEmployee.list();
+		model.addAttribute("listEmployee", listEmployee);
+		return "pracownicy";
+
+	}
+    /* Pracownicy*/
+	@RequestMapping("/newEmployee")
+	public String showNewEmployee(Model model) {
+
+		Employee employee = new Employee();
+		model.addAttribute("employee", employee);
+		return "new_employee";
+	}
+
+	@RequestMapping(value = "/saveEmployee", method = RequestMethod.POST)
+	public String save(@ModelAttribute("employee") Employee employee) {
+		daoEmployee.save(employee);
+		return "redirect:/";
+
+	}
+	
+	/* Realizacje */
+	@RequestMapping("/realizacje")
+	public String viewRealizacje(Model model) {
+
+		List<Implementation> listImplementation = daoImplementation.list();
+		model.addAttribute("listImplementation", listImplementation);
+		return "realizacje";
+
+	}
+
+	
+	@RequestMapping("/newImplementation")
+	public String showNewImplementation(Model model) {
+
+		Implementation implementation = new Implementation();
+		model.addAttribute("implementation", implementation);
+		return "new_implementation";
+	}
+
+	@RequestMapping(value = "/saveImplementation", method = RequestMethod.POST)
+	public String save(@ModelAttribute("implementation") Implementation implementation) {
+		daoImplementation.save(implementation);
+		return "redirect:/";
+
+	}
+	
+	/* Rekiny */
+	@RequestMapping("/rekiny")
+	public String viewRekiny(Model model) {
+
+		List<Shark> listShark = daoShark.list();
+		model.addAttribute("listShark", listShark);
+		return "rekiny";
+
+	}
+
+	
+	@RequestMapping("/newShark")
+	public String showNewShark(Model model) {
+
+		Shark shark= new Shark();
+		model.addAttribute("shark", shark);
+		return "new_shark";
+	}
+
+	@RequestMapping(value = "/saveShark", method = RequestMethod.POST)
+	public String save(@ModelAttribute("shark") Shark shark) {
+		daoShark.save(shark);
+		return "redirect:/";
+
+	}
+	
+	/* Stanowiska */
+	@RequestMapping("/stanowiska")
+	public String viewStanowiska(Model model) {
+
+		List<Position> listPosition = daoPosition.list();
+		model.addAttribute("listPosition", listPosition);
+		return "stanowiska";
+
+	}
+
+	
+	@RequestMapping("/newPosition")
+	public String showNewPosition(Model model) {
+
+		Position position= new Position();
+		model.addAttribute("position", position);
+		return "new_position";
+	}
+
+	@RequestMapping(value = "/savePosition", method = RequestMethod.POST)
+	public String save(@ModelAttribute("position") Position position) {
+		daoPosition.save(position);
+		return "redirect:/";
+
+	}
+	
+	/* Transakcje*/
+	@RequestMapping("/transakcje")
+	public String viewTransakcje(Model model) {
+
+		List<Transaction> listTransaction = daoTransaction.list();
+		model.addAttribute("listTransaction", listTransaction);
+		return "transakcje";
+
+	}
+
+	
+	@RequestMapping("/newTransaction")
+	public String showNewTransaction(Model model) {
+
+		Transaction transaction= new Transaction();
+		model.addAttribute("transaction", transaction);
+		return "new_transaction";
+	}
+
+	@RequestMapping(value = "/saveTransaction", method = RequestMethod.POST)
+	public String save(@ModelAttribute("transaction") Transaction transaction) {
+		daoTransaction.save(transaction);
+		return "redirect:/";
+
+	}
+	
+	
+	/* Wynagrodzenia*/
+	@RequestMapping("/wynagrodzenia")
+	public String viewWynagrodzenia(Model model) {
+
+		List<Payment> listPayment = daoPayment.list();
+		model.addAttribute("listPayment", listPayment);
+		return "wynagrodzenia";
+
+	}
+
+	
+	@RequestMapping("/newPayment")
+	public String showNewPayment(Model model) {
+
+		Payment payment= new Payment();
+		model.addAttribute("payment", payment);
+		return "new_payment";
+	}
+
+	@RequestMapping(value = "/savePayment", method = RequestMethod.POST)
+	public String save(@ModelAttribute("payment") Payment payment) {
+		daoPayment.save(payment);
+		return "redirect:/";
+
+	}
+	
+	/* Zbiorniki_wodne*/
+	@RequestMapping("/zbiorniki_wodne")
+	public String viewZbiorniki_wodne(Model model) {
+
+		List<WaterTank> listWaterTank = daoWaterTank.list();
+		model.addAttribute("listWaterTank", listWaterTank);
+		return "zbiorniki_wodne";
+
+	}
+
+	
+	@RequestMapping("/newWaterTank")
+	public String showNewWaterTank(Model model) {
+
+		WaterTank watertank= new WaterTank();
+		model.addAttribute("watertank", watertank);
+		return "new_watertank";
+	}
+
+	@RequestMapping(value = "/saveWaterTank", method = RequestMethod.POST)
+	public String save(@ModelAttribute("watertank") WaterTank watertank) {
+		daoWaterTank.save(watertank);
+		return "redirect:/";
+
+	}
+	
+	/* Zbiorniki_wodne_realizacje*/
+	@RequestMapping("/zbiorniki_wodne_realizacje")
+	public String viewZbiorniki_wodne_realizacje(Model model) {
+
+		List<WaterTankImplementation> listWaterTankImplementation = daoWaterTankImplementation.list();
+		model.addAttribute("listWaterTankImplementation", listWaterTankImplementation);
+		return "zbiorniki_wodne_realizacje";
+
+	}
+
+	
+	@RequestMapping("/newWaterTankImplementation")
+	public String showNewWaterTankImplementation(Model model) {
+
+		WaterTankImplementation watertankimplementation= new WaterTankImplementation();
+		model.addAttribute("watertankimplementation", watertankimplementation);
+		return "new_water_tank_implementation";
+	}
+
+	@RequestMapping(value = "/saveWaterTankImplementation", method = RequestMethod.POST)
+	public String save(@ModelAttribute("watertankimplementation") WaterTankImplementation watertankimplementation) {
+		daoWaterTankImplementation.save(watertankimplementation);
+		return "redirect:/";
+
+	}
+	
+	/* Zwierzeta*/
+	@RequestMapping("/zwierzeta")
+	public String viewZwierzeta(Model model) {
+
+		List<Animal> listAnimal = daoAnimal.list();
+		model.addAttribute("listAnimal", listAnimal);
+		return "zwierzeta";
+
+	}
+
+	
+	@RequestMapping("/newAnimal")
+	public String showNewAnimal(Model model) {
+
+		Animal animal= new Animal();
+		model.addAttribute("animal", animal);
+		return "new_animal";
+	}
+
+	@RequestMapping(value = "/saveAnimal", method = RequestMethod.POST)
+	public String save(@ModelAttribute("animal") Animal animal) {
+		daoAnimal.save(animal);
 		return "redirect:/";
 
 	}
