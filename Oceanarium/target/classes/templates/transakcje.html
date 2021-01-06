@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/html"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Transaction Manager App</title>
+</head>
+<body>
+
+	<div align="center">
+		<!-- Page header -->
+		<h1>Transactions</h1>
+
+
+		<!-- Entry to a new page -->
+		<a href="/newTransaction">Enter new transaction</a>
+
+		<!-- Table -->
+		<table border="1" cellpadding="10">
+
+			<!-- Table header -->
+			<thead>
+				<tr>
+					<th>Nr_klienta</th>
+					<th>Nr_realizacji</th>
+					<th>Data_zakupu</th>
+					<th>Czy_faktura</th>
+					<th>Akcja</th>
+					
+					
+				</tr>
+			</thead>
+
+			<!-- Table body -->
+			<tbody>
+
+				<tr th:each="transaction:${listTransaction}">
+					<td th:text="${transaction.nr_klienta}">Nr_klienta</td>
+					<td th:text="${transaction.nr_realizacji}">Nr_realizacji</td>
+					<td th:text="${transaction.data_zakupu}">Data_zakupu</td>
+					<td th:text="${transaction.czy_faktura}">Czy_faktura</td>
+					
+					
+
+
+
+				</tr>
+
+			</tbody>
+
+
+
+		</table>
+
+
+
+
+
+	</div>
+
+</body>
+</html>
