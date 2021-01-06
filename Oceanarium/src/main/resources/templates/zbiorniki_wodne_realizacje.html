@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/html"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>WaterTankImplementation Manager App</title>
+</head>
+<body>
+
+	<div align="center">
+		<!-- Page header -->
+		<h1>WaterTankImplementations</h1>
+
+
+		<!-- Entry to a new page -->
+		<a href="/newWaterTankImplementation">Enter new watertankimplementation</a>
+
+		<!-- Table -->
+		<table border="1" cellpadding="10">
+
+			<!-- Table header -->
+			<thead>
+				<tr>
+					<th>Nr_zbiornika</th>
+					<th>Nr_realizacji</th>
+					<th>Akcja</th>
+					
+					
+					
+				</tr>
+			</thead>
+
+			<!-- Table body -->
+			<tbody>
+
+				<tr th:each="watertankimplementation:${listWaterTankImplementation}">
+					<td th:text="${watertankimplementation.nr_zbiornika}">Nr_zbiornika</td>
+					<td th:text="${watertankimplementation.nr_realizacji}">Nr_realizacji</td>
+					
+					
+					
+
+
+
+				</tr>
+
+			</tbody>
+
+
+
+		</table>
+
+
+
+
+
+	</div>
+
+</body>
+</html>
