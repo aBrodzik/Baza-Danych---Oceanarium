@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/html"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Implementation Manager App</title>
+</head>
+<body>
+
+	<div align="center">
+		<!-- Page header -->
+		<h1>Implementations</h1>
+
+
+		<!-- Entry to a new page -->
+		<a href="/newImplementation">Enter new implementation</a>
+
+		<!-- Table -->
+		<table border="1" cellpadding="10">
+
+			<!-- Table header -->
+			<thead>
+				<tr>
+					<th>Nr_realizacji</th>
+					<th>Cena</th>
+					<th>Data</th>
+					<th>Nr_atrakcji</th>
+					<th>Akcja</th>
+					
+				</tr>
+			</thead>
+
+			<!-- Table body -->
+			<tbody>
+
+				<tr th:each="implementation:${listImplementation}">
+					<td th:text="${implementation.nr_realizacji}">Nr_realizacji</td>
+					<td th:text="${implementation.cena}">Cena</td>
+					<td th:text="${implementation.data}">Data</td>
+					<td th:text="${implementation.nr_atrakcji}">Nr_atrakcji</td>
+					
+
+
+
+				</tr>
+
+			</tbody>
+
+
+
+		</table>
+
+
+
+
+
+	</div>
+
+</body>
+</html>
