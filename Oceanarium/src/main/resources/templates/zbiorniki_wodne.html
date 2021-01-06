@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/html"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>WaterTank Manager App</title>
+</head>
+<body>
+
+	<div align="center">
+		<!-- Page header -->
+		<h1>WaterTanks</h1>
+
+
+		<!-- Entry to a new page -->
+		<a href="/newWaterTank">Enter new watertank</a>
+
+		<!-- Table -->
+		<table border="1" cellpadding="10">
+
+			<!-- Table header -->
+			<thead>
+				<tr>
+					<th>Nr_zbiornika</th>
+					<th>Pojemnosc</th>
+					<th>Temperatura</th>
+					<th>Typ_zbiornika</th>
+					<th>Ilosc_miejsc</th>
+					<th>Nr_atrakcji</th>
+					<th>Nr_oceanarium</th>
+					<th>Akcja</th>
+					
+					
+				</tr>
+			</thead>
+
+			<!-- Table body -->
+			<tbody>
+
+				<tr th:each="watertank:${listWaterTank}">
+					<td th:text="${watertank.nr_zbiornika}">Nr_zbiornika</td>
+					<td th:text="${watertank.pojemnosc}">Pojemnosc</td>
+					<td th:text="${watertank.temperatura}">Temperatura</td>
+					<td th:text="${watertank.typ_zbiornika}">Typ_zbiornika</td>
+					<td th:text="${watertank.ilosc_miejsc}">Ilosc_miejsc</td>
+					<td th:text="${watertank.nr_atrakcji}">Nr_atrakcji</td>
+					<td th:text="${watertank.nr_oceanarium}">Nr_oceanarium</td>
+					
+					
+
+
+
+				</tr>
+
+			</tbody>
+
+
+
+		</table>
+
+
+
+
+
+	</div>
+
+</body>
+</html>
