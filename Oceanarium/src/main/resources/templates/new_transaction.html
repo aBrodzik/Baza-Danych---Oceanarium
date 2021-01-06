@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/html"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>New Transaction</title>
+</head>
+<body>
+
+	<div align="center">
+		<!-- Page header -->
+		<h1>Enter new Transaction</h1>
+
+		<form action="#" th:action="@{/saveTransaction}" th:object="${transaction}"
+			method="post">
+
+			<!-- Table -->
+			<table border="1" cellpadding="10">
+
+				<!-- Table first row -->
+				<tr>
+					<td>Nr_klienta</td>
+					<td><input type="text" th:field="*{nr_klienta}"></td>
+				</tr>
+				<tr>
+					<td>Nr_realizacji</td>
+					<td><input type="text" th:field="*{nr_realizacji}"></td>
+				</tr>
+				<tr>
+					<td>Data_zakupu</td>
+					<td><input type="text" th:field="*{data_zakupu}"></td>
+				</tr>
+				
+				<tr>
+					<td>Czy_faktura</td>
+					<td><input type="text" th:field="*{czy_faktura}"></td>
+				</tr>
+				
+				<tr>
+					<td colspan="2"><button type="submit">Save</button>
+				</tr>
+
+
+
+			</table>
+
+		</form>
+
+
+	</div>
+
+</body>
+</html>
