@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/html"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Payment Manager App</title>
+</head>
+<body>
+
+	<div align="center">
+		<!-- Page header -->
+		<h1>Payments</h1>
+
+
+		<!-- Entry to a new page -->
+		<a href="/newPayment">Enter new payment</a>
+
+		<!-- Table -->
+		<table border="1" cellpadding="10">
+
+			<!-- Table header -->
+			<thead>
+				<tr>
+					<th>Nr_wynagrodzenia</th>
+					<th>Data_wynagrodzenia</th>
+					<th>Kwota_pod</th>
+					<th>Kwota_dod</th>
+					<th>Nr_pracownika</th>
+					<th>Akcja</th>
+					
+					
+				</tr>
+			</thead>
+
+			<!-- Table body -->
+			<tbody>
+
+				<tr th:each="payment:${listPayment}">
+					<td th:text="${payment.nr_wynagrodzenia}">Nr_wynagrodzenia</td>
+					<td th:text="${payment.data_wynagrodzenia}">Data_wynagrodzenia</td>
+					<td th:text="${payment.kwota_pod}">Kwota_pod</td>
+					<td th:text="${payment.kwota_dod}">Kwota_dod</td>
+					<td th:text="${payment.nr_pracownika}">Nr_pracownika</td>
+					
+					
+
+
+
+				</tr>
+
+			</tbody>
+
+
+
+		</table>
+
+
+
+
+
+	</div>
+
+</body>
+</html>
