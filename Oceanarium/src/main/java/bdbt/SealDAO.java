@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.namedparam.BeanPropertySqlParameterSource;
+import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.jdbc.core.simple.SimpleJdbcInsert;
 import org.springframework.stereotype.Repository;
 
@@ -37,16 +38,24 @@ public class SealDAO {
 
 	/* (R)ead */
 	public Seal get(int id) {
-		return null;
+		Object[] args = {id};
+		String sql = "SELECT * FROM FOKI WHERE NR_ZWIERZECIA =" + args[0];
+		Seal seal = jdbcTemplate.queryForObject(sql, BeanPropertyRowMapper.newInstance(Seal.class));
+		return seal;
 	}
 
 	/* (U)pdate */
 	public void update(Seal seal) {
+		String sql = "UPDATE FOKI SET nr_zwierzecia=:nr_zwierzecia, czy_wystepy=:czy_wystepy, ilosc_w_zbiorniku=:ilosc_w_zbiorniku WHERE nr_zwierzecia=:nr_zwierzecia";
+		BeanPropertySqlParameterSource param = new BeanPropertySqlParameterSource(seal);
+		NamedParameterJdbcTemplate template = new NamedParameterJdbcTemplate(jdbcTemplate);
+		template.update(sql,param);
 
 	}
 
 	/* (D)delete */
-	public void delete(int id) {
-
+	public void delete(int nr_zwierzecia) {
+		String sql = "DELETE FOKI ADRESY WHERE nr_zwierzecia =?";
+		jdbcTemplate.update(sql,nr_zwierzecia);
 	}
 }

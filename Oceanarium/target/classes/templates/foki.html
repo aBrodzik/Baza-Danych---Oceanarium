@@ -13,8 +13,8 @@
 
 
 		<!-- Entry to a new page -->
-		<a href="/newSeal">Enter new seal</a>
-
+		<a href="/newSeal">Enter new seal</a> <br />
+		<br />
 		<!-- Table -->
 		<table border="1" cellpadding="10">
 
@@ -35,6 +35,8 @@
 					<td th:text="${seal.nr_zwierzecia}">Nr_zwierzecia</td>
 					<td th:text="${seal.czy_wystepy}">Czy_wystepy</td>
 					<td th:text="${seal.ilosc_w_zbiorniku}">Ilosc_w_zbiorniku</td>
+					<td><a th:href="@{'/edit_seal/'+${seal.nr_zwierzecia}}">Edit</a>&nbsp;&nbsp;&nbsp;&nbsp;
+						<a th:href="@{'/deleteSeal/'+${seal.nr_zwierzecia}}">Delete</a></td>
 
 
 				</tr>

@@ -14,7 +14,7 @@
 
 		<!-- Entry to a new page -->
 		<a href="/newOceanarium">Enter new oceanarium</a>
-
+	<br/><br/>
 		<!-- Table -->
 		<table border="1" cellpadding="10">
 
@@ -35,6 +35,8 @@
 					<td th:text="${oceanarium.nr_oceanarium}">Nr_oceanarium</td>
 					<td th:text="${oceanarium.nazwa}">nazwa</td>
 					<td th:text="${oceanarium.nr_adresu}">Nr_adresu</td>
+					<td><a th:href="@{'/edit_oceanarium/'+${oceanarium.nr_oceanarium}}">Edit</a>&nbsp;&nbsp;&nbsp;&nbsp;
+						<a th:href="@{'/deleteOceanarium/'+${oceanarium.nr_oceanarium}}">Delete</td>
 				</tr>
 
 			</tbody>

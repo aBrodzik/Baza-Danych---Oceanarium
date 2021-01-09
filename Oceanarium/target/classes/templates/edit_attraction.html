@@ -1,0 +1,72 @@
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/html"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Edit Attraction</title>
+</head>
+<body>
+
+	<div align="center"></div>
+
+	<h1>Edit Attraction</h1>
+
+	<br />
+
+	<form action="#" th:action="@{/updateAttraction}" th:object="${attraction}"
+		method="post">
+
+
+		<table border="1" cellpadding="10">
+
+			<!-- 1 -->
+			<tr>
+
+				<td>ID</td>
+				<td><input type="text" th:field="*{nr_atrakcji}" readonly="readonly"></td>
+
+			</tr>
+			<!--  2 -->
+			<tr>
+
+				<td>nazwa</td>
+				<td><input type="text" th:field="*{nazwa}" ></td>
+
+			</tr>
+			<!--  3 -->
+			<tr>
+
+				<td>opis</td>
+				<td><input type="text" th:field="*{opis}"></td>
+
+			</tr>
+			<!--  4 -->
+			<tr>
+
+				<td>NR_oceanarium</td>
+				<td><input type="text" th:field="*{nr_oceanarium}" ></td>
+
+			</tr>
+			
+			<!--  Save -->
+			<tr>
+
+				<td>ID</td>
+				<td colspane="2"><button type="submit">Save</button></td>
+
+			</tr>
+
+
+		</table>
+
+
+
+
+	</form>
+
+
+
+
+</body>
+</html>

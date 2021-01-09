@@ -13,8 +13,7 @@
 
 
 		<!-- Entry to a new page -->
-		<a href="/newAttraction">Enter new attraction</a>
-
+		<a href="/newAttraction">Enter new attraction</a> <br /> <br />
 		<!-- Table -->
 		<table border="1" cellpadding="10">
 
@@ -33,11 +32,14 @@
 			<tbody>
 
 				<tr th:each="attraction:${listAttraction}">
-				<td th:text="${attraction.nr_atrakcji}">Nr_atrakcji</td>
-				<td th:text="${attraction.nazwa}">nazwa</td>
-				<td th:text="${attraction.opis}">opis</td>
-				<td th:text="${attraction.nr_oceanarium}">Nr_oceanarium</td>
-			</tr>
+					<td th:text="${attraction.nr_atrakcji}">Nr_atrakcji</td>
+					<td th:text="${attraction.nazwa}">nazwa</td>
+					<td th:text="${attraction.opis}">opis</td>
+					<td th:text="${attraction.nr_oceanarium}">Nr_oceanarium</td>
+					<td><a
+						th:href="@{'/edit_attraction/'+${attraction.nr_atrakcji}}">Edit</a>&nbsp;&nbsp;&nbsp;&nbsp;
+						<a th:href="@{'/deleteAttraction/'+${attraction.nr_atrakcji}}">Delete</a></td>
+				</tr>
 
 			</tbody>
 

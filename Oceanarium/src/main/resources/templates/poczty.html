@@ -13,8 +13,8 @@
 
 
 		<!-- Entry to a new page -->
-		<a href="/newPost">Enter new post</a>
-
+		<a href="/newPost">Enter new post</a> <br />
+		<br />
 		<!-- Table -->
 		<table border="1" cellpadding="10">
 
@@ -32,10 +32,12 @@
 			<tbody>
 
 				<tr th:each="post:${listPost}">
-				<td th:text="${post.nr_poczty}">Nr_poczty</td>
-				<td th:text="${post.kod_poczty}">kod_poczty</td>
-				<td th:text="${post.poczta}">poczta</td>
-			</tr>
+					<td th:text="${post.nr_poczty}">Nr_poczty</td>
+					<td th:text="${post.kod_poczty}">kod_poczty</td>
+					<td th:text="${post.poczta}">poczta</td>
+					<td><a th:href="@{'/edit_post/'+${post.nr_poczty}}">Edit</a>&nbsp;&nbsp;&nbsp;&nbsp;
+						<a th:href="@{'/deletePost/'+${post.nr_poczty}}">Delete</a></td>
+				</tr>
 
 			</tbody>
 

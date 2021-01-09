@@ -13,8 +13,8 @@
 
 
 		<!-- Entry to a new page -->
-		<a href="/newClient">Enter new client</a>
-
+		<a href="/newClient">Enter new client</a> <br />
+		<br />
 		<!-- Table -->
 		<table border="1" cellpadding="10">
 
@@ -36,14 +36,16 @@
 			<tbody>
 
 				<tr th:each="client:${listClient}">
-				<td th:text="${client.imie}">imie</td>
-				<td th:text="${client.nazwisko}">nazwisko</td>
-				<td th:text="${client.nr_telefonu}">nr_telefonu</td>
-				<td th:text="${client.plec}">plec</td>
-				<td th:text="${client.data_urodzenia}">data_urodzenia</td>
-				<td th:text="${client.nr_oceanarium}">nr_oceanarium</td>
-				<td th:text="${client.nr_adresu}">nr_adresu</td>
-			</tr>
+					<td th:text="${client.imie}">imie</td>
+					<td th:text="${client.nazwisko}">nazwisko</td>
+					<td th:text="${client.nr_telefonu}">nr_telefonu</td>
+					<td th:text="${client.plec}">plec</td>
+					<td th:text="${client.data_urodzenia}">data_urodzenia</td>
+					<td th:text="${client.nr_oceanarium}">nr_oceanarium</td>
+					<td th:text="${client.nr_adresu}">nr_adresu</td>
+					<td><a th:href="@{'/edit_client/'+${client.nr_klienta}}">Edit</a>&nbsp;&nbsp;&nbsp;&nbsp;
+						<a th:href="@{'/deleteClient/'+${client.nr_klienta}}">Delete</a></td>
+				</tr>
 
 			</tbody>
 

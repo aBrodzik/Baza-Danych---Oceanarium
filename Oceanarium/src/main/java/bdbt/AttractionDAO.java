@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.namedparam.BeanPropertySqlParameterSource;
+import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.jdbc.core.simple.SimpleJdbcInsert;
 import org.springframework.stereotype.Repository;
 @Repository
@@ -34,18 +35,26 @@ public class AttractionDAO {
 	}
 
 	/* (R)ead */
-	public Adress get(int id) {
-		return null;
+	public Attraction get(int id) {
+		Object[] args = {id};
+		String sql = "SELECT * FROM ATRAKCJE WHERE NR_ATRAKCJI =" + args[0];
+		Attraction attraction = jdbcTemplate.queryForObject(sql, BeanPropertyRowMapper.newInstance(Attraction.class));
+		return attraction;
 	}
 
 	/* (U)pdate */
 	public void update(Attraction attraction) {
+		String sql = "UPDATE ATRAKCJE SET  nazwa=:nazwa, opis=:opis, nr_oceanarium=:nr_oceanarium WHERE nr_atrakcji=:nr_atrakcji";
+		BeanPropertySqlParameterSource param = new BeanPropertySqlParameterSource(attraction);
+		NamedParameterJdbcTemplate template = new NamedParameterJdbcTemplate(jdbcTemplate);
+		template.update(sql,param);
 
 	}
 
 	/* (D)delete */
-	public void delete(int id) {
-
+	public void delete(int nr_atrakcji) {
+		String sql = "DELETE FROM ATRAKCJE WHERE NR_ATRAKCJI =?";
+		jdbcTemplate.update(sql,nr_atrakcji);
 	}
 
 }

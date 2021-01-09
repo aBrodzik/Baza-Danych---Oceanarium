@@ -13,8 +13,8 @@
 
 
 		<!-- Entry to a new page -->
-		<a href="/newDolphin">Enter new dolphin</a>
-
+		<a href="/newDolphin">Enter new dolphin</a> <br />
+		<br />
 		<!-- Table -->
 		<table border="1" cellpadding="10">
 
@@ -37,6 +37,8 @@
 					<td th:text="${dolphin.ilosc_w_zbiorniku}">Ilosc_w_zbiorniku</td>
 					<td th:text="${dolphin.interakcja_z_klientam}">Interakcja_z_klientem</td>
 					<td th:text="${dolphin.czy_wystepy}">Czy_wystepy</td>
+					<td><a th:href="@{'/edit_dolphin/'+${dolphin.nr_zwierzecia}}">Edit</a>&nbsp;&nbsp;&nbsp;&nbsp;
+						<a th:href="@{'/deleteDolphin/'+${dolphin.nr_zwierzecia}}">Delete</a></td>
 
 				</tr>
 

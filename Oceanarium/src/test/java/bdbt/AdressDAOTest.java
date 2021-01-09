@@ -39,7 +39,9 @@ class AdressDAOTest {
 
 	@Test
 	void testGet() {
-		fail("Not yet implemented");
+		int id=1;
+		Adress adress = dao.get(id);
+		assertNotNull(adress);
 	}
 
 	@Test

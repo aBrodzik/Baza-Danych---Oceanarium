@@ -13,8 +13,8 @@
 
 
 		<!-- Entry to a new page -->
-		<a href="/newWaterTankKeeper">Enter new sale</a>
-
+		<a href="/newWaterTankKeeper">Enter new sale</a> <br />
+		<br />
 		<!-- Table -->
 		<table border="1" cellpadding="10">
 
@@ -33,6 +33,9 @@
 				<tr th:each="waterTankKeeper:${listWaterTankKeeper}">
 					<td th:text="${waterTankKeeper.nr_pracownika}">Nr_pracownika</td>
 					<td th:text="${waterTankKeeper.nr_zbiornika}">nr_zbiornika</td>
+					<td><a
+						th:href="@{'/edit_watertankkeeper/'+${waterTankKeeper.nr_pracownika}+'/'+${waterTankKeeper.nr_zbiornika}}">Edit</a>&nbsp;&nbsp;&nbsp;&nbsp;
+						<a th:href="@{'/deleteWaterTankKeeper/'+${waterTankKeeper.nr_pracownika}+'/'+${waterTankKeeper.nr_zbiornika}}">Delete</a></td>
 				</tr>
 
 			</tbody>

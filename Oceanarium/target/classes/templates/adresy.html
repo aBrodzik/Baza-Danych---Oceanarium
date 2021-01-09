@@ -13,7 +13,7 @@
 
 
 		<!-- Entry to a new page -->
-		<a href="/newAdress">Enter new sale</a>
+		<a href="/newAdress">Enter new sale</a> <br /> <br />
 
 		<!-- Table -->
 		<table border="1" cellpadding="10">
@@ -34,12 +34,14 @@
 			<tbody>
 
 				<tr th:each="adress:${listAdress}">
-				<td th:text="${adress.nr_adresu}">Nr_adresu</td>
-				<td th:text="${adress.miasto}">Miasto</td>
-				<td th:text="${adress.ulica}">Ulica</td>
-				<td th:text="${adress.nr_lokalu}">Nr_lokalu</td>
-				<td th:text="${adress.nr_poczty}">Nr_poczty</td>
-			</tr>
+					<td th:text="${adress.nr_adresu}">Nr_adresu</td>
+					<td th:text="${adress.miasto}">Miasto</td>
+					<td th:text="${adress.ulica}">Ulica</td>
+					<td th:text="${adress.nr_lokalu}">Nr_lokalu</td>
+					<td th:text="${adress.nr_poczty}">Nr_poczty</td>
+					<td><a th:href="@{'/edit_adress/'+${adress.nr_adresu}}">Edit</a>
+					&nbsp;&nbsp;&nbsp;&nbsp; <a th:href="@{'/deleteAdress/'+${adress.nr_adresu}}">Delete</a></td>
+				</tr>
 
 			</tbody>
 

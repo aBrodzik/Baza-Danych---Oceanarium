@@ -6,8 +6,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 public class AppController {
@@ -53,8 +55,6 @@ public class AppController {
 
 	}
 
-	
-	
 	/* Adresy */
 
 	@RequestMapping("/adresy")
@@ -80,9 +80,30 @@ public class AppController {
 		return "redirect:/";
 
 	}
-	
+
+	@RequestMapping("/edit_adress/{id}")
+	public ModelAndView showEditAdress(@PathVariable(name = "id") int id) {
+		ModelAndView mav = new ModelAndView("edit_adress");
+		Adress adress = daoAdres.get(id);
+		mav.addObject("adress", adress);
+		return mav;
+	}
+
+	@RequestMapping(value = "/updateAdress", method = RequestMethod.POST)
+	public String updateAdress(@ModelAttribute("adress") Adress adress) {
+		daoAdres.update(adress);
+		return "redirect:/";
+	}
+
+	@RequestMapping("/deleteAdress/{id}")
+	public String deleteAdress(@PathVariable(name = "id") int id) {
+		daoAdres.delete(id);
+
+		return "redirect:/";
+	}
+
 	/* Atrakcje */
-	
+
 	@RequestMapping("/atrakcje")
 	public String viewAtrakcje(Model model) {
 
@@ -91,7 +112,7 @@ public class AppController {
 		return "atrakcje";
 
 	}
-	
+
 	@RequestMapping("/newAttraction")
 	public String showNewAttraction(Model model) {
 
@@ -106,10 +127,30 @@ public class AppController {
 		return "redirect:/";
 
 	}
-	
-	
-	/*Delfiny*/
-	
+
+	@RequestMapping("/edit_attraction/{id}")
+	public ModelAndView showEditAttraction(@PathVariable(name = "id") int id) {
+		ModelAndView mav = new ModelAndView("edit_attraction");
+		Attraction attraction = daoAttraction.get(id);
+		mav.addObject("attraction", attraction);
+		return mav;
+	}
+
+	@RequestMapping(value = "/updateAttraction", method = RequestMethod.POST)
+	public String updateAtrakcje(@ModelAttribute("attraction") Attraction attraction) {
+		daoAttraction.update(attraction);
+
+		return "redirect:/";
+	}
+
+	@RequestMapping("/deleteAttraction/{id}")
+	public String deleteAttraction(@PathVariable(name = "id") int id) {
+		daoAttraction.delete(id);
+
+		return "redirect:/";
+	}
+	/* Delfiny */
+
 	@RequestMapping("/delfiny")
 	public String viewDelfiny(Model model) {
 
@@ -118,7 +159,7 @@ public class AppController {
 		return "delfiny";
 
 	}
-	
+
 	@RequestMapping("/newDolphin")
 	public String showNewDolphin(Model model) {
 
@@ -126,17 +167,37 @@ public class AppController {
 		model.addAttribute("dolphin", dolphin);
 		return "new_dolphin";
 	}
-	
+
 	@RequestMapping(value = "/saveDolphin", method = RequestMethod.POST)
 	public String saveDolphin(@ModelAttribute("dolphin") Dolphin dolphin) {
 		daoDolphin.save(dolphin);
 		return "redirect:/";
 
 	}
-	
-	
-	/*Foki*/
-	
+
+	@RequestMapping("/edit_dolphin/{id}")
+	public ModelAndView showEditDolphin(@PathVariable(name = "id") int id) {
+		ModelAndView mav = new ModelAndView("edit_dolphin");
+		Dolphin dolphin = daoDolphin.get(id);
+		mav.addObject("dolphin", dolphin);
+		return mav;
+	}
+
+	@RequestMapping(value = "/updateDolphin", method = RequestMethod.POST)
+	public String updateDolphin(@ModelAttribute("dolphin") Dolphin dolphin) {
+		daoDolphin.update(dolphin);
+
+		return "redirect:/";
+	}
+
+	@RequestMapping("/deleteDolphin/{id}")
+	public String deleteDolphin(@PathVariable(name = "id") int id) {
+		daoDolphin.delete(id);
+
+		return "redirect:/";
+	}
+	/* Foki */
+
 	@RequestMapping("/foki")
 	public String viewFoki(Model model) {
 
@@ -145,7 +206,7 @@ public class AppController {
 		return "foki";
 
 	}
-	
+
 	@RequestMapping("/newSeal")
 	public String showNewSeal(Model model) {
 
@@ -153,17 +214,37 @@ public class AppController {
 		model.addAttribute("seal", seal);
 		return "new_seal";
 	}
-	
+
 	@RequestMapping(value = "/saveSeal", method = RequestMethod.POST)
 	public String saveSeal(@ModelAttribute("seal") Seal seal) {
 		daoSeal.save(seal);
 		return "redirect:/";
 
 	}
-	
-	
-	/*klienci*/
-	
+
+	@RequestMapping("/edit_seal/{id}")
+	public ModelAndView showEditForm(@PathVariable(name = "id") int id) {
+		ModelAndView mav = new ModelAndView("edit_seal");
+		Seal seal = daoSeal.get(id);
+		mav.addObject("seal", seal);
+		return mav;
+	}
+
+	@RequestMapping(value = "/updateSeal", method = RequestMethod.POST)
+	public String updateSeal(@ModelAttribute("seal") Seal seal) {
+		daoSeal.update(seal);
+
+		return "redirect:/";
+	}
+
+	@RequestMapping("/deleteSeal/{id}")
+	public String deleteSeal(@PathVariable(name = "id") int id) {
+		daoSeal.delete(id);
+
+		return "redirect:/";
+	}
+
+	/* klienci */
 
 	@RequestMapping("/klienci")
 	public String viewKlienci(Model model) {
@@ -173,7 +254,7 @@ public class AppController {
 		return "klienci";
 
 	}
-	
+
 	@RequestMapping("/newClient")
 	public String showNewClient(Model model) {
 
@@ -181,17 +262,38 @@ public class AppController {
 		model.addAttribute("client", client);
 		return "new_client";
 	}
-	
+
 	@RequestMapping(value = "/saveClient", method = RequestMethod.POST)
 	public String saveClient(@ModelAttribute("client") Client client) {
 		daoClient.save(client);
 		return "redirect:/";
 
 	}
+
+	@RequestMapping("/edit_client/{id}")
+	public ModelAndView showEditClient(@PathVariable(name = "id") int id) {
+		ModelAndView mav = new ModelAndView("edit_client");
+		Client client = daoClient.get(id);
+		mav.addObject("client", client);
+		return mav;
+	}
+
+	@RequestMapping(value = "/updateClient", method = RequestMethod.POST)
+	public String updateClient(@ModelAttribute("client") Client client) {
+		daoClient.update(client);
+
+		return "redirect:/";
+	}
+
+	@RequestMapping("/deleteClient/{id}")
+	public String deleteClient(@PathVariable(name="id") int id) {
+		daoClient.delete(id);
+		
+		return "redirect:/";
+	}
 	
-	
-	/*oceanaria*/
-	
+	/* oceanaria */
+
 	@RequestMapping("/oceanaria")
 	public String viewOceanaria(Model model) {
 
@@ -200,7 +302,7 @@ public class AppController {
 		return "oceanaria";
 
 	}
-	
+
 	@RequestMapping("/newOceanarium")
 	public String showNewOceanarium(Model model) {
 
@@ -208,17 +310,38 @@ public class AppController {
 		model.addAttribute("oceanarium", oceanarium);
 		return "new_oceanarium";
 	}
-	
+
 	@RequestMapping(value = "/saveOceanarium", method = RequestMethod.POST)
 	public String saveOceanarium(@ModelAttribute("oceanarium") Oceanarium oceanarium) {
 		daoOceanarium.save(oceanarium);
 		return "redirect:/";
 
 	}
+
+	@RequestMapping("/edit_oceanarium/{id}")
+	public ModelAndView showEditOceanarium(@PathVariable(name = "id") int id) {
+		ModelAndView mav = new ModelAndView("edit_oceanarium");
+		Oceanarium oceanarium = daoOceanarium.get(id);
+		mav.addObject("oceanarium", oceanarium);
+		return mav;
+	}
+
+	@RequestMapping(value = "/updateOceanarium", method = RequestMethod.POST)
+	public String updateOceanarium(@ModelAttribute("oceanarium") Oceanarium oceanarium) {
+		daoOceanarium.update(oceanarium);
+
+		return "redirect:/";
+	}
+
+	@RequestMapping("/deleteOceanarium/{id}")
+	public String deleteOceanarium(@PathVariable(name="id") int id) {
+		daoOceanarium.delete(id);
+		
+		return "redirect:/";
+	}
 	
 	
-	
-	/*opiekunowie zbiorniki wodne*/
+	/* opiekunowie zbiorniki wodne */
 	@RequestMapping("/opiekunowie_zbiorniki_wodne")
 	public String viewWaterTankKeepers(Model model) {
 
@@ -227,7 +350,7 @@ public class AppController {
 		return "opiekunowie_zbiorniki_wodne";
 
 	}
-	
+
 	@RequestMapping("/newWaterTankKeeper")
 	public String showNewWaterTankKeeper(Model model) {
 
@@ -235,15 +358,37 @@ public class AppController {
 		model.addAttribute("watertankkeeper", waterTankKeeper);
 		return "new_waterTankKeeper";
 	}
-	
+
 	@RequestMapping(value = "/saveWaterTankKeeper", method = RequestMethod.POST)
 	public String saveWaterTankKeeper(@ModelAttribute("watertankkeeper") WaterTankKeeper waterTankKeeper) {
 		daoWaterTankKeeper.save(waterTankKeeper);
 		return "redirect:/";
 
 	}
+
+	@RequestMapping("/edit_watertankkeeper/{p}/{z}")
+	public ModelAndView showEditWTK(@PathVariable(name = "p") int p, @PathVariable(name = "z") int z) {
+		ModelAndView mav = new ModelAndView("edit_watertankkeeper");
+		WaterTankKeeper waterTankKeeper = daoWaterTankKeeper.get(p, z);
+		mav.addObject("watertankkeeper", waterTankKeeper);
+		return mav;
+	}
+
+	@RequestMapping(value = "/updateWaterTankKeeper/{z}", method = RequestMethod.POST)
+	public String updateWTK(@ModelAttribute("watertankkeeper") WaterTankKeeper wtk, @PathVariable(name = "z") int z) {
+		daoWaterTankKeeper.update(wtk, z);
+
+		return "redirect:/";
+	}
 	
-	/*poczty */
+	@RequestMapping("/deleteWaterTankKeeper/{p}/{z}")
+	public String deleteAdress(@PathVariable(name="p") int p, @PathVariable(name="z") int z) {
+		daoWaterTankKeeper.delete(p,z);
+		
+		return "redirect:/";
+	}
+
+	/* poczty */
 	@RequestMapping("/poczty")
 	public String viewPost(Model model) {
 
@@ -252,7 +397,7 @@ public class AppController {
 		return "poczty";
 
 	}
-	
+
 	@RequestMapping("/newPost")
 	public String showNewPost(Model model) {
 
@@ -260,7 +405,7 @@ public class AppController {
 		model.addAttribute("post", post);
 		return "new_post";
 	}
-	
+
 	@RequestMapping(value = "/savePost", method = RequestMethod.POST)
 	public String savePost(@ModelAttribute("post") Post post) {
 		daoPost.save(post);
@@ -268,6 +413,29 @@ public class AppController {
 
 	}
 
+	@RequestMapping("/edit_post/{id}")
+	public ModelAndView showEditPost(@PathVariable(name = "id") int id) {
+		ModelAndView mav = new ModelAndView("edit_post");
+		Post post = daoPost.get(id);
+		mav.addObject("post", post);
+		return mav;
+	}
+
+	@RequestMapping(value = "/updatePost", method = RequestMethod.POST)
+	public String updatePost(@ModelAttribute("post") Post post) {
+		daoPost.update(post);
+
+		return "redirect:/";
+	}
+	
+	@RequestMapping("/deletePost/{id}")
+	public String deletePost(@PathVariable(name="id") int id) {
+		daoPost.delete(id);
+		
+		return "redirect:/";
+	}
+
+	/* Pracownicy */
 	@RequestMapping("/pracownicy")
 	public String viewPracownicy(Model model) {
 
@@ -276,7 +444,7 @@ public class AppController {
 		return "pracownicy";
 
 	}
-    /* Pracownicy*/
+
 	@RequestMapping("/newEmployee")
 	public String showNewEmployee(Model model) {
 
@@ -291,7 +459,7 @@ public class AppController {
 		return "redirect:/";
 
 	}
-	
+
 	/* Realizacje */
 	@RequestMapping("/realizacje")
 	public String viewRealizacje(Model model) {
@@ -302,7 +470,6 @@ public class AppController {
 
 	}
 
-	
 	@RequestMapping("/newImplementation")
 	public String showNewImplementation(Model model) {
 
@@ -317,7 +484,7 @@ public class AppController {
 		return "redirect:/";
 
 	}
-	
+
 	/* Rekiny */
 	@RequestMapping("/rekiny")
 	public String viewRekiny(Model model) {
@@ -328,11 +495,10 @@ public class AppController {
 
 	}
 
-	
 	@RequestMapping("/newShark")
 	public String showNewShark(Model model) {
 
-		Shark shark= new Shark();
+		Shark shark = new Shark();
 		model.addAttribute("shark", shark);
 		return "new_shark";
 	}
@@ -343,7 +509,7 @@ public class AppController {
 		return "redirect:/";
 
 	}
-	
+
 	/* Stanowiska */
 	@RequestMapping("/stanowiska")
 	public String viewStanowiska(Model model) {
@@ -354,11 +520,10 @@ public class AppController {
 
 	}
 
-	
 	@RequestMapping("/newPosition")
 	public String showNewPosition(Model model) {
 
-		Position position= new Position();
+		Position position = new Position();
 		model.addAttribute("position", position);
 		return "new_position";
 	}
@@ -369,8 +534,8 @@ public class AppController {
 		return "redirect:/";
 
 	}
-	
-	/* Transakcje*/
+
+	/* Transakcje */
 	@RequestMapping("/transakcje")
 	public String viewTransakcje(Model model) {
 
@@ -380,11 +545,10 @@ public class AppController {
 
 	}
 
-	
 	@RequestMapping("/newTransaction")
 	public String showNewTransaction(Model model) {
 
-		Transaction transaction= new Transaction();
+		Transaction transaction = new Transaction();
 		model.addAttribute("transaction", transaction);
 		return "new_transaction";
 	}
@@ -395,9 +559,8 @@ public class AppController {
 		return "redirect:/";
 
 	}
-	
-	
-	/* Wynagrodzenia*/
+
+	/* Wynagrodzenia */
 	@RequestMapping("/wynagrodzenia")
 	public String viewWynagrodzenia(Model model) {
 
@@ -407,11 +570,10 @@ public class AppController {
 
 	}
 
-	
 	@RequestMapping("/newPayment")
 	public String showNewPayment(Model model) {
 
-		Payment payment= new Payment();
+		Payment payment = new Payment();
 		model.addAttribute("payment", payment);
 		return "new_payment";
 	}
@@ -422,8 +584,8 @@ public class AppController {
 		return "redirect:/";
 
 	}
-	
-	/* Zbiorniki_wodne*/
+
+	/* Zbiorniki_wodne */
 	@RequestMapping("/zbiorniki_wodne")
 	public String viewZbiorniki_wodne(Model model) {
 
@@ -433,11 +595,10 @@ public class AppController {
 
 	}
 
-	
 	@RequestMapping("/newWaterTank")
 	public String showNewWaterTank(Model model) {
 
-		WaterTank watertank= new WaterTank();
+		WaterTank watertank = new WaterTank();
 		model.addAttribute("watertank", watertank);
 		return "new_watertank";
 	}
@@ -448,8 +609,8 @@ public class AppController {
 		return "redirect:/";
 
 	}
-	
-	/* Zbiorniki_wodne_realizacje*/
+
+	/* Zbiorniki_wodne_realizacje */
 	@RequestMapping("/zbiorniki_wodne_realizacje")
 	public String viewZbiorniki_wodne_realizacje(Model model) {
 
@@ -459,11 +620,10 @@ public class AppController {
 
 	}
 
-	
 	@RequestMapping("/newWaterTankImplementation")
 	public String showNewWaterTankImplementation(Model model) {
 
-		WaterTankImplementation watertankimplementation= new WaterTankImplementation();
+		WaterTankImplementation watertankimplementation = new WaterTankImplementation();
 		model.addAttribute("watertankimplementation", watertankimplementation);
 		return "new_water_tank_implementation";
 	}
@@ -474,8 +634,8 @@ public class AppController {
 		return "redirect:/";
 
 	}
-	
-	/* Zwierzeta*/
+
+	/* Zwierzeta */
 	@RequestMapping("/zwierzeta")
 	public String viewZwierzeta(Model model) {
 
@@ -485,11 +645,10 @@ public class AppController {
 
 	}
 
-	
 	@RequestMapping("/newAnimal")
 	public String showNewAnimal(Model model) {
 
-		Animal animal= new Animal();
+		Animal animal = new Animal();
 		model.addAttribute("animal", animal);
 		return "new_animal";
 	}
@@ -500,7 +659,5 @@ public class AppController {
 		return "redirect:/";
 
 	}
-	
-	
-	
+
 }

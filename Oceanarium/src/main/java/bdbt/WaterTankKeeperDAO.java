@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.namedparam.BeanPropertySqlParameterSource;
+import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.jdbc.core.simple.SimpleJdbcInsert;
 import org.springframework.stereotype.Repository;
 
@@ -38,18 +39,25 @@ public class WaterTankKeeperDAO {
 	}
 
 	/* (R)ead */
-	public WaterTankKeeper get(int id) {
-		return null;
+	public WaterTankKeeper get(int p, int z) {
+		Object[] args = {p,z};
+		String sql = "SELECT * FROM OPIEKUNOWIE_ZBIORNIKI_WODNE WHERE NR_PRACOWNIKA=" + args[0] +" AND NR_ZBIORNIKA=" + args[1]+" FETCH NEXT 1 ROWS ONLY";
+		WaterTankKeeper waterTankKeeper = jdbcTemplate.queryForObject(sql, BeanPropertyRowMapper.newInstance(WaterTankKeeper.class));
+		return waterTankKeeper;
 	}
 
 	/* (U)pdate */
-	public void update(WaterTankKeeper waterTankKeeper) {
-
+	public void update(WaterTankKeeper waterTankKeeper, int z) {
+		String sql = "UPDATE OPIEKUNOWIE_ZBIORNIKI_WODNE SET nr_zbiornika=:nr_zbiornika WHERE nr_pracownika=:nr_pracownika AND NR_ZBIORNIKA ="+z;
+		BeanPropertySqlParameterSource param = new BeanPropertySqlParameterSource(waterTankKeeper);
+		NamedParameterJdbcTemplate template = new NamedParameterJdbcTemplate(jdbcTemplate);
+		template.update(sql,param);
 	}
 
 	/* (D)delete */
-	public void delete(int id) {
-
+	public void delete(int nr_pracownika, int nr_zbiornika) {
+		String sql = "DELETE FROM OPIEKUNOWIE_ZBIORNIKI_WODNE WHERE NR_PRACOWNIKA =? AND NR_ZBIORNIKA=?";
+		jdbcTemplate.update(sql,nr_pracownika,nr_zbiornika);
 	}
 	
 	

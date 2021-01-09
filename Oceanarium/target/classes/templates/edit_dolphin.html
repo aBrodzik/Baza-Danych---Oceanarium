@@ -1,0 +1,72 @@
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/html"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Edit Dolphin</title>
+</head>
+<body>
+
+	<div align="center"></div>
+
+	<h1>Edit Dolphin</h1>
+
+	<br />
+
+	<form action="#" th:action="@{/updateDolphin}" th:object="${dolphin}"
+		method="post">
+
+
+		<table border="1" cellpadding="10">
+
+			<!-- 1 -->
+			<tr>
+
+				<td>nr_zwierzecia</td>
+				<td><input type="text" th:field="*{nr_zwierzecia}" readonly="readonly"></td>
+
+			</tr>
+			<!--  2 -->
+			<tr>
+
+				<td>Ilosc_w_zbiorniku</td>
+				<td><input type="text" th:field="*{ilosc_w_zbiorniku}" ></td>
+
+			</tr>
+			<!--  3 -->
+			<tr>
+
+				<td>interakcja_z_klientam</td>
+				<td><input type="text" th:field="*{interakcja_z_klientam}"></td>
+
+			</tr>
+			<!--  4 -->
+			<tr>
+
+				<td>czy_wystepy</td>
+				<td><input type="text" th:field="*{czy_wystepy}" ></td>
+
+			</tr>
+			
+			<!--  Save -->
+			<tr>
+
+				<td>ID</td>
+				<td colspane="2"><button type="submit">Save</button></td>
+
+			</tr>
+
+
+		</table>
+
+
+
+
+	</form>
+
+
+
+
+</body>
+</html>
