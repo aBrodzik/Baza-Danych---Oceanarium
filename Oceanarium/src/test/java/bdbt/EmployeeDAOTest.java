@@ -39,17 +39,32 @@ class EmployeeDAOTest {
 
 	@Test
 	void testGet() {
-		fail("Not yet implemented");
+		int id = 41;
+		Employee employee = dao.get(id);
+		
+		assertNotNull(employee);
 	}
 
 	@Test
 	void testUpdate() {
-		fail("Not yet implemented");
+		Employee employee = new Employee();
+		employee.setNr_pracownika(41);
+		employee.setImie("Chrom");
+		employee.setNazwisko("Stonog");
+		employee.setData_urodzenia("2000.10.10");
+		employee.setPesel("1231213131");
+		employee.setNr_oceanarium(1);
+		employee.setNr_adresu(5);
+		employee.setNr_stanowiska(1);
+		
+		dao.update(employee);
+		
 	}
 
 	@Test
 	void testDelete() {
-		fail("Not yet implemented");
+		int nr_pracownika = 41;
+		dao.delete(nr_pracownika);
 	}
 
 }
