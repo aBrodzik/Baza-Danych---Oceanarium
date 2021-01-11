@@ -89,6 +89,8 @@ border-color:chartreuse;
 					<td th:text="${animal.waga}">Waga</td>
 					<td th:text="${animal.nr_zbiornika}">Nr_zbiornika</td>
 					<td th:text="${animal.nr_oceanarium}">Nr_oceanarium</td>
+					<td><a th:href="@{'/edit_animal/'+${animal.nr_zwierzecia}}">Edit</a>&nbsp;&nbsp;&nbsp;&nbsp;
+						<a th:href="@{'/deleteAnimal/'+${animal.nr_zwierzecia}}">Delete</a></td>
 					
 					
 
