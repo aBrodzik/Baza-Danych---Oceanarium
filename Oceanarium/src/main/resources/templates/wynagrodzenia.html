@@ -83,6 +83,8 @@ border-color:chartreuse;
 					<td th:text="${payment.kwota_pod}">Kwota_pod</td>
 					<td th:text="${payment.kwota_dod}">Kwota_dod</td>
 					<td th:text="${payment.nr_pracownika}">Nr_pracownika</td>
+					<td><a th:href="@{'/edit_payment/'+${payment.nr_wynagrodzenia}}">Edit</a>&nbsp;&nbsp;&nbsp;&nbsp;
+						<a th:href="@{'/deletePayment/'+${payment.nr_wynagrodzenia}}">Delete</a></td>
 					
 					
 
