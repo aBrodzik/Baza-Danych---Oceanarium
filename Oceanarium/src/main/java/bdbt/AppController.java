@@ -459,6 +459,28 @@ public class AppController {
 		return "redirect:/";
 
 	}
+	@RequestMapping("/edit_employee/{id}")
+	public ModelAndView showEditEmployee(@PathVariable(name = "id") int id) {
+		ModelAndView mav = new ModelAndView("edit_employee");
+		Employee employee = daoEmployee.get(id);
+		mav.addObject("employee", employee);
+
+		return mav;
+	}
+
+	@RequestMapping(value = "/updateEmployee", method = RequestMethod.POST)
+	public String updateEmployee(@ModelAttribute("employee") Employee employee) {
+		daoEmployee.update(employee);
+
+		return "redirect:/";
+	}
+	
+	@RequestMapping("/deleteEmployee/{id}")
+	public String deleteEmployee(@PathVariable(name = "id") int id) {
+		daoEmployee.delete(id);
+
+		return "redirect:/";
+	}
 
 	/* Realizacje */
 	@RequestMapping("/realizacje")
@@ -483,6 +505,29 @@ public class AppController {
 		daoImplementation.save(implementation);
 		return "redirect:/";
 
+	}
+
+	@RequestMapping("/edit_implementation/{id}")
+	public ModelAndView showEditImplementation(@PathVariable(name = "id") int id) {
+		ModelAndView mav = new ModelAndView("edit_implementation");
+		Implementation implementation = daoImplementation.get(id);
+		mav.addObject("implementation", implementation);
+
+		return mav;
+	}
+
+	@RequestMapping(value = "/updateImplementation", method = RequestMethod.POST)
+	public String updateImplementation(@ModelAttribute("implementation") Implementation implementation) {
+		daoImplementation.update(implementation);
+
+		return "redirect:/";
+	}
+	
+	@RequestMapping("/deleteImplementation/{id}")
+	public String deleteImplementation(@PathVariable(name="id") int id) {
+		daoImplementation.delete(id);
+		
+		return "redirect:/";
 	}
 
 	/* Rekiny */
@@ -510,6 +555,29 @@ public class AppController {
 
 	}
 
+	@RequestMapping("/edit_shark/{id}")
+	public ModelAndView showEditShark(@PathVariable(name = "id") int id) {
+		ModelAndView mav = new ModelAndView("edit_shark");
+		Shark shark = daoShark.get(id);
+		mav.addObject("shark", shark);
+
+		return mav;
+	}
+
+	@RequestMapping(value = "/updateShark", method = RequestMethod.POST)
+	public String updateShark(@ModelAttribute("shark") Shark shark) {
+		daoShark.update(shark);
+
+		return "redirect:/";
+	}
+	
+	@RequestMapping("/deleteShark/{id}")
+	public String deleteShark(@PathVariable(name="id") int id) {
+		daoShark.delete(id);
+		
+		return "redirect:/";
+	}
+
 	/* Stanowiska */
 	@RequestMapping("/stanowiska")
 	public String viewStanowiska(Model model) {
@@ -533,6 +601,29 @@ public class AppController {
 		daoPosition.save(position);
 		return "redirect:/";
 
+	}
+
+	@RequestMapping("/edit_position/{id}")
+	public ModelAndView showEditPosition(@PathVariable(name = "id") int id) {
+		ModelAndView mav = new ModelAndView("edit_position");
+		Position position = daoPosition.get(id);
+		mav.addObject("position", position);
+
+		return mav;
+	}
+
+	@RequestMapping(value = "/updatePosition", method = RequestMethod.POST)
+	public String updatePosition(@ModelAttribute("position") Position position) {
+		daoPosition.update(position);
+
+		return "redirect:/";
+	}
+	
+	@RequestMapping("/deletePosition/{id}")
+	public String deletePosition(@PathVariable(name="id") int id) {
+		daoPosition.delete(id);
+		
+		return "redirect:/";
 	}
 
 	/* Transakcje */
@@ -560,6 +651,28 @@ public class AppController {
 
 	}
 
+	@RequestMapping("/edit_transaction/{p}/{z}")
+	public ModelAndView showEditTransaction(@PathVariable(name = "p") int p, @PathVariable(name = "z") int z) {
+		ModelAndView mav = new ModelAndView("edit_transaction");
+		Transaction transaction = daoTransaction.get(p, z);
+		mav.addObject("transaction", transaction);
+		return mav;
+	}
+
+	@RequestMapping(value = "/updateTransaction/{z}", method = RequestMethod.POST)
+	public String updateTransaction(@ModelAttribute("transaction") Transaction transaction, @PathVariable(name = "z") int z) {
+		daoTransaction.update(transaction, z);
+
+		return "redirect:/";
+	}
+	
+	@RequestMapping("/deleteTransaction/{p}/{z}")
+	public String deleteTransaction(@PathVariable(name="p") int p, @PathVariable(name="z") int z) {
+		daoTransaction.delete(p,z);
+		
+		return "redirect:/";
+	}
+
 	/* Wynagrodzenia */
 	@RequestMapping("/wynagrodzenia")
 	public String viewWynagrodzenia(Model model) {
@@ -585,6 +698,29 @@ public class AppController {
 
 	}
 
+	@RequestMapping("/edit_payment/{id}")
+		public ModelAndView showEditPayment(@PathVariable(name = "id") int id) {
+			ModelAndView mav = new ModelAndView("edit_payment");
+			Payment payment = daoPayment.get(id);
+			mav.addObject("payment", payment);
+			
+			return mav;
+		}
+		
+		@RequestMapping(value = "/updatePayment", method = RequestMethod.POST)
+		public String updatePayment(@ModelAttribute("payment") Payment payment) {
+			daoPayment.update(payment);
+			
+			return "redirect:/";
+		}
+		
+		@RequestMapping("/deletePayment/{id}")
+		public String deletePayment(@PathVariable(name="id") int id) {
+			daoPayment.delete(id);
+			
+			return "redirect:/";
+		}
+
 	/* Zbiorniki_wodne */
 	@RequestMapping("/zbiorniki_wodne")
 	public String viewZbiorniki_wodne(Model model) {
@@ -608,6 +744,29 @@ public class AppController {
 		daoWaterTank.save(watertank);
 		return "redirect:/";
 
+	}
+
+	@RequestMapping("/edit_watertank/{id}")
+	public ModelAndView showEditWaterTank(@PathVariable(name = "id") int id) {
+		ModelAndView mav = new ModelAndView("edit_watertank");
+		WaterTank watertank = daoWaterTank.get(id);
+		mav.addObject("watertank", watertank);
+		
+		return mav;
+	}
+	
+	@RequestMapping(value = "/updateWaterTank", method = RequestMethod.POST)
+	public String updateWaterTank(@ModelAttribute("watertank") WaterTank watertank) {
+		daoWaterTank.update(watertank);
+		
+		return "redirect:/";
+	}
+	
+	@RequestMapping("/deleteWaterTank/{id}")
+	public String deleteWaterTank(@PathVariable(name="id") int id) {
+		daoWaterTank.delete(id);
+		
+		return "redirect:/";
 	}
 
 	/* Zbiorniki_wodne_realizacje */
@@ -635,6 +794,28 @@ public class AppController {
 
 	}
 
+	@RequestMapping("/edit_watertankimplementation/{p}/{z}")
+	public ModelAndView showEditWaterTankImplementation(@PathVariable(name = "p") int p, @PathVariable(name = "z") int z) {
+		ModelAndView mav = new ModelAndView("edit_watertankimplementation");
+		WaterTankImplementation watertankimplementation = daoWaterTankImplementation.get(p, z);
+		mav.addObject("watertankimplementation", watertankimplementation);
+		return mav;
+	}
+
+	@RequestMapping(value = "/updateWaterTankImplementation/{z}", method = RequestMethod.POST)
+	public String updateWaterTankImplementation(@ModelAttribute("watertankimplementation") WaterTankImplementation watertankimplementation, @PathVariable(name = "z") int z) {
+		daoWaterTankImplementation.update(watertankimplementation, z);
+
+		return "redirect:/";
+	}
+	
+	@RequestMapping("/deleteWaterTankImplementation/{p}/{z}")
+	public String deleteWaterTankImplementation(@PathVariable(name="p") int p, @PathVariable(name="z") int z) {
+		daoWaterTankImplementation.delete(p,z);
+		
+		return "redirect:/";
+	}
+
 	/* Zwierzeta */
 	@RequestMapping("/zwierzeta")
 	public String viewZwierzeta(Model model) {
@@ -658,6 +839,29 @@ public class AppController {
 		daoAnimal.save(animal);
 		return "redirect:/";
 
+	}
+
+	@RequestMapping("/edit_animal/{id}")
+	public ModelAndView showEditAnimal(@PathVariable(name = "id") int id) {
+		ModelAndView mav = new ModelAndView("edit_animal");
+		Animal animal = daoAnimal.get(id);
+		mav.addObject("animal", animal);
+
+		return mav;
+	}
+
+	@RequestMapping(value = "/updateAnimal", method = RequestMethod.POST)
+	public String updateAnimal(@ModelAttribute("animal") Animal animal) {
+		daoAnimal.update(animal);
+
+		return "redirect:/";
+	}
+	
+	@RequestMapping("/deleteAnimal/{id}")
+	public String deleteAnimal(@PathVariable(name="id") int id) {
+		daoAnimal.delete(id);
+		
+		return "redirect:/";
 	}
 
 }
