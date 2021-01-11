@@ -80,6 +80,8 @@ border-color:chartreuse;
 					<td th:text="${implementation.cena}">Cena</td>
 					<td th:text="${implementation.data}">Data</td>
 					<td th:text="${implementation.nr_atrakcji}">Nr_atrakcji</td>
+					<td><a th:href="@{'/edit_implementation/'+${implementation.nr_realizacji}}">Edit</a>&nbsp;&nbsp;&nbsp;&nbsp;
+						<a th:href="@{'/deleteImplementation/'+${implementation.nr_realizacji}}">Delete</a></td>
 					
 
 
