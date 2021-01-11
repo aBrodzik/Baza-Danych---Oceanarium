@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/html"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Edit Shark</title>
+</head>
+<body>
+
+	<div align="center">
+
+		<h1>Edit Shark</h1>
+
+		<br />
+
+		<form action="#" th:action="@{/updateShark}" th:object="${shark}"
+			method="post">
+
+
+			<table border="1" cellpadding="10">
+
+				<!-- 1 -->
+				<tr>
+
+					<td>Nr_zwierzecia</td>
+					<td><input type="text" th:field="*{nr_zwierzecia}"
+						readonly="readonly"></td>
+
+				</tr>
+				<!--  2 -->
+				<tr>
+
+					<td>Ilosc_w_zbiorniku</td>
+					<td><input type="text" th:field="*{ilosc_w_zbiorniku}"></td>
+
+				</tr>
+
+				<!--  3 -->
+				<tr>
+
+					<td>Rodzaj</td>
+					<td><input type="text" th:field="*{rodzaj}"></td>
+
+				</tr>
+				<!--  3,5 -->
+				<tr>
+
+					<td>Wielkosc</td>
+					<td><input type="text" th:field="*{wielkosc}"></td>
+
+				</tr>
+
+				<!--  Save -->
+				<tr>
+
+
+					<td colspane="2"><button type="submit">Save</button></td>
+
+				</tr>
+
+
+			</table>
+
+
+
+
+		</form>
+
+	</div>
+
+
+
+
+</body>
+</html>
