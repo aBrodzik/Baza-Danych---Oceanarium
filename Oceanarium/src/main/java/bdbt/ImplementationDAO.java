@@ -40,16 +40,27 @@ public class ImplementationDAO {
 
 	/* (R)ead */
 	public Implementation get(int id) {
-		return null;
+		Object[] args = {id};
+		String sql = "SELECT * FROM REALIZACJE WHERE NR_REALIZACJI =" + args[0];
+		Implementation implementation = jdbcTemplate.queryForObject(sql, BeanPropertyRowMapper.newInstance(Implementation.class));
+		return implementation;
 	}
+
 
 	/* (U)pdate */
 	public void update(Implementation implementation) {
+		String sql = "UPDATE REALIZACJE SET  cena=:cena, data=TO_DATE(:data,'yyyy-mm-dd HH24:MI:SS'), nr_atrakcji=:nr_atrakcji WHERE nr_realizacji=:nr_realizacji";
+		BeanPropertySqlParameterSource param = new BeanPropertySqlParameterSource(implementation);
+		NamedParameterJdbcTemplate template = new NamedParameterJdbcTemplate(jdbcTemplate);
+		template.update(sql,param);
 
 	}
 
-	/* (D)elete */
-	public void delete(int id) {
+
+	/* (D)delete */
+	public void delete(int nr_realizacji) {
+		String sql = "DELETE FROM REALIZACJE WHERE NR_REALIZACJI =?";
+		jdbcTemplate.update(sql, nr_realizacji);
 
 	}
 }
