@@ -78,6 +78,10 @@ border-color:chartreuse;
 				<tr th:each="watertankimplementation:${listWaterTankImplementation}">
 					<td th:text="${watertankimplementation.nr_zbiornika}">Nr_zbiornika</td>
 					<td th:text="${watertankimplementation.nr_realizacji}">Nr_realizacji</td>
+					<td><a
+						th:href="@{'/edit_watertankimplementation/'+${watertankimplementation.nr_zbiornika}+'/'+${watertankimplementation.nr_realizacji}}">Edit</a>&nbsp;&nbsp;&nbsp;&nbsp;
+						<a
+						th:href="@{'/deleteWaterTankImplementation/'+${watertankimplementation.nr_zbiornika}+'/'+${watertankimplementation.nr_realizacji}}">Delete</a></td>
 					
 					
 					
