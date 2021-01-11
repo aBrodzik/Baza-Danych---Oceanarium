@@ -40,16 +40,26 @@ public class EmployeeDAO {
 
 	/* (R)ead */
 	public Employee get(int id) {
-		return null;
+		Object[] args = { id };
+		String sql = "SELECT * FROM PRACOWNICY WHERE NR_PRACOWNIKA =" + args[0];
+		Employee employee = jdbcTemplate.queryForObject(sql, BeanPropertyRowMapper.newInstance(Employee.class));
+
+		return employee;
 	}
 
 	/* (U)pdate */
 	public void update(Employee employee) {
+		String sql = "UPDATE PRACOWNICY SET imie=:imie, nazwisko=:nazwisko, data_urodzenia=TO_DATE(:data_urodzenia,'yyyy-mm-dd HH24:MI:SS'), pesel=:pesel, nr_oceanarium=:nr_oceanarium, nr_adresu=:nr_adresu, nr_stanowiska=:nr_stanowiska WHERE nr_pracownika=:nr_pracownika";
+		BeanPropertySqlParameterSource param = new BeanPropertySqlParameterSource(employee);
+		NamedParameterJdbcTemplate template = new NamedParameterJdbcTemplate(jdbcTemplate);
+
+		template.update(sql, param);
 
 	}
 
 	/* (D)elete */
-	public void delete(int id) {
-
+	public void delete(int nr_pracownika) {
+		String sql = "DELETE FROM PRACOWNICY WHERE NR_PRACOWNIKA = ?";
+		jdbcTemplate.update(sql, nr_pracownika);
 	}
 }
