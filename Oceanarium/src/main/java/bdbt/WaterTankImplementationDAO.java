@@ -39,17 +39,24 @@ public class WaterTankImplementationDAO {
 	}
 
 	/* (R)ead */
-	public WaterTankImplementation get(int id) {
-		return null;
+	public WaterTankImplementation get(int p, int z) {
+		Object[] args = {p,z};
+		String sql = "SELECT * FROM ZBIORNIKI_WODNE_REALIZACJE WHERE NR_ZBIORNIKA=" + args[0] +" AND NR_REALIZACJI=" + args[1]+" FETCH NEXT 1 ROWS ONLY";
+		WaterTankImplementation watertankimplementation = jdbcTemplate.queryForObject(sql, BeanPropertyRowMapper.newInstance(WaterTankImplementation.class));
+		return watertankimplementation;
 	}
 
 	/* (U)pdate */
-	public void update(WaterTankImplementation watertankimplementation) {
-
+	public void update(WaterTankImplementation watertankimplementation, int z) {
+		String sql = "UPDATE ZBIORNIKI_WODNE_REALIZACJE SET nr_zbiornika=:nr_zbiornika WHERE nr_realizacji=:nr_realizacji AND NR_ZBIORNIKA ="+z;
+		BeanPropertySqlParameterSource param = new BeanPropertySqlParameterSource(watertankimplementation);
+		NamedParameterJdbcTemplate template = new NamedParameterJdbcTemplate(jdbcTemplate);
+		template.update(sql,param);
 	}
 
-	/* (D)elete */
-	public void delete(int id) {
-
+	/* (D)delete */
+	public void delete(int nr_zbiornika, int nr_realizacji) {
+		String sql = "DELETE FROM ZBIORNIKI_WODNE_REALIZACJE WHERE NR_ZBIORNIKA =? AND NR_REALIZACJI=?";
+		jdbcTemplate.update(sql,nr_zbiornika,nr_realizacji);
 	}
 }
