@@ -40,16 +40,24 @@ public class SharkDAO {
 
 	/* (R)ead */
 	public Shark get(int id) {
-		return null;
+		Object[] args = {id};
+		String sql = "SELECT * FROM REKINY WHERE NR_ZWIERZECIA =" + args[0];
+		Shark shark = jdbcTemplate.queryForObject(sql, BeanPropertyRowMapper.newInstance(Shark.class));
+		return shark;
 	}
 
 	/* (U)pdate */
 	public void update(Shark shark) {
+		String sql = "UPDATE REKINY SET  ilosc_w_zbiorniku=:ilosc_w_zbiorniku, rodzaj=:rodzaj, wielkosc=:wielkosc WHERE nr_zwierzecia=:nr_zwierzecia";
+		BeanPropertySqlParameterSource param = new BeanPropertySqlParameterSource(shark);
+		NamedParameterJdbcTemplate template = new NamedParameterJdbcTemplate(jdbcTemplate);
+		template.update(sql,param);
 
 	}
 
-	/* (D)elete */
-	public void delete(int id) {
-
+	/* (D)delete */
+	public void delete(int nr_zwierzecia) {
+		String sql = "DELETE FROM REKINY WHERE NR_ZWIERZECIA =?";
+		jdbcTemplate.update(sql,nr_zwierzecia);
 	}
 }
