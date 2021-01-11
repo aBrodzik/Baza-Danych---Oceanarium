@@ -40,16 +40,27 @@ public class AnimalDAO {
 
 	/* (R)ead */
 	public Animal get(int id) {
-		return null;
+		Object[] args = {id};
+		String sql = "SELECT * FROM ZWIERZETA WHERE NR_ZWIERZECIA =" + args[0];
+		Animal animal = jdbcTemplate.queryForObject(sql, BeanPropertyRowMapper.newInstance(Animal.class));
+
+		return animal;
 	}
 
 	/* (U)pdate */
 	public void update(Animal animal) {
+		String sql = "UPDATE ZWIERZETA SET nazwa_gatunkowa=:nazwa_gatunkowa, wiek=:wiek, czy_drapiezne=:czy_drapiezne, imie=:imie, waga=:waga, nr_zbiornika=:nr_zbiornika, nr_oceanarium=:nr_oceanarium WHERE nr_zwierzecia=:nr_zwierzecia";
+		BeanPropertySqlParameterSource param = new BeanPropertySqlParameterSource(animal);
+		NamedParameterJdbcTemplate template = new NamedParameterJdbcTemplate(jdbcTemplate);
+
+		template.update(sql, param);
 
 	}
 
 	/* (D)elete */
-	public void delete(int id) {
+	public void delete(int nr_zwierzecia) {
+		String sql = "DELETE FROM ZWIERZETA WHERE NR_ZWIERZECIA =?";
+		jdbcTemplate.update(sql, nr_zwierzecia);
 
 	}
 }
