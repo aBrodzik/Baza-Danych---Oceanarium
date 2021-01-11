@@ -40,16 +40,27 @@ public class PaymentDAO {
 
 	/* (R)ead */
 	public Payment get(int id) {
-		return null;
+		Object[] args = {id};
+		String sql = "SELECT * FROM WYNAGRODZENIA WHERE NR_WYNAGRODZENIA =" + args[0];
+		Payment payment = jdbcTemplate.queryForObject(sql, BeanPropertyRowMapper.newInstance(Payment.class));
+
+		return payment;
 	}
 
 	/* (U)pdate */
 	public void update(Payment payment) {
+		String sql = "UPDATE WYNAGRODZENIA SET data_wynagrodzenia=TO_DATE(:data_wynagrodzenia,'yyyy-mm-dd HH24:MI:SS'), kwota_pod=:kwota_pod, kwota_dod=:kwota_dod, nr_pracownika=:nr_pracownika WHERE nr_wynagrodzenia=:nr_wynagrodzenia";
+		BeanPropertySqlParameterSource param = new BeanPropertySqlParameterSource(payment);
+		NamedParameterJdbcTemplate template = new NamedParameterJdbcTemplate(jdbcTemplate);
+
+		template.update(sql, param);
 
 	}
 
 	/* (D)elete */
-	public void delete(int id) {
+	public void delete(int nr_wynagrodzenia) {
+		String sql = "DELETE FROM WYNAGRODZENIA WHERE NR_WYNAGRODZENIA =?";
+		jdbcTemplate.update(sql, nr_wynagrodzenia);
 
 	}
 }
