@@ -80,6 +80,8 @@ border-color:chartreuse;
 					<td th:text="${shark.ilosc_w_zbiorniku}">Ilosc_w_zbiorniku</td>
 					<td th:text="${shark.rodzaj}">Rodzaj</td>
 					<td th:text="${shark.wielkosc}">Wielkosc</td>
+					<td><a th:href="@{'/edit_shark/'+${shark.nr_zwierzecia}}">Edit</a>&nbsp;&nbsp;&nbsp;&nbsp;
+						<a th:href="@{'/deleteShark/'+${shark.nr_zwierzecia}}">Delete</a></td>
 					
 
 
