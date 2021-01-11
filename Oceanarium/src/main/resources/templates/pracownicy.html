@@ -87,6 +87,12 @@ border-color:chartreuse;
 					<td th:text="${employee.nr_oceanarium}">Nr_oceanarium</td>
 					<td th:text="${employee.nr_adresu}">Nr_adresu</td>
 					<td th:text="${employee.nr_stanowiska}">Nr_stanowiska</td>
+					<td><a
+						th:href="@{'/edit_employee/' + ${employee.nr_pracownika}}">Edit</a>&nbsp;&nbsp;&nbsp;&nbsp;
+
+						<a th:href="@{'/deleteEmployee/' + ${employee.nr_pracownika}}">Delete</a>
+
+					</td>
 
 
 
