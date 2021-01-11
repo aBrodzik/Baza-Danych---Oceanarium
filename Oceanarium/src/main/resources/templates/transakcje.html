@@ -81,6 +81,10 @@ border-color:chartreuse;
 					<td th:text="${transaction.nr_realizacji}">Nr_realizacji</td>
 					<td th:text="${transaction.data_zakupu}">Data_zakupu</td>
 					<td th:text="${transaction.czy_faktura}">Czy_faktura</td>
+					<td><a
+						th:href="@{'/edit_transaction/'+${transaction.nr_klienta}+'/'+${transaction.nr_realizacji}}">Edit</a>&nbsp;&nbsp;&nbsp;&nbsp;
+						<a
+						th:href="@{'/deleteTransaction/'+${transaction.nr_klienta}+'/'+${transaction.nr_realizacji}}">Delete</a></td>
 					
 					
 
