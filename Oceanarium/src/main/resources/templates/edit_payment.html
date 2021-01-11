@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/html"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Edit Payment</title>
+</head>
+<body>
+	<div align="center">
+		<!-- Page header -->
+		<h1>Edit Payment</h1>
+
+		<!-- End line/new line -->
+		<br />
+
+		<form action="#" th:action="@{/updatePayment}" th:object="${payment}"
+			method="post">
+			<!-- Table -->
+
+			<table border="1" cellpadding="10">
+				<!-- Table row -->
+
+				<tr>
+					<td>Nr_wynagrodzenia:</td>
+					<td><input type="text" th:field="*{nr_wynagrodzenia}"
+						readonly="readonly"></td>
+				</tr>
+
+				<!-- Table (second) row -->
+				<tr>
+					<td>Data_wynagrodzenia:</td>
+					<td><input type="text" th:field="*{data_wynagrodzenia}"></td>
+				</tr>
+
+				<!-- Table (third) row -->
+				<tr>
+					<td>Kwota_pod:</td>
+					<td><input type="text" th:field="*{kwota_pod}"></td>
+				</tr>
+
+				<!-- Table (fourth) row -->
+				<tr>
+					<td>Kwota_dod:</td>
+					<td><input type="text" th:field="*{kwota_dod}"></td>
+				</tr>
+				<!-- Table (fifth) row -->
+				<tr>
+					<td>Nr_pracownika:</td>
+					<td><input type="text" th:field="*{nr_pracownika}"></td>
+				</tr>
+				
+
+				<!-- Button for save -->
+
+				<tr>
+					
+					<td colspan="2"><button type="submit">Save</button></td>
+				</tr>
+
+
+			</table>
+
+		</form>
+
+	</div>
+</body>
+</html>
