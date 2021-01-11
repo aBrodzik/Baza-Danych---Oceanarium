@@ -79,6 +79,8 @@ border-color:chartreuse;
 					<td th:text="${position.nr_stanowiska}">Nr_stanowiska</td>
 					<td th:text="${position.nazwa_stanowiska}">Nazwa_stanowiska</td>
 					<td th:text="${position.opis}">Opis</td>
+					<td><a th:href="@{'/edit_position/'+${position.nr_stanowiska}}">Edit</a>&nbsp;&nbsp;&nbsp;&nbsp;
+						<a th:href="@{'/deletePosition/'+${position.nr_stanowiska}}">Delete</a></td>
 					
 					
 
