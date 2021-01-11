@@ -40,16 +40,27 @@ public class PositionDAO {
 
 	/* (R)ead */
 	public Position get(int id) {
-		return null;
+		Object[] args = {id};
+		String sql = "SELECT * FROM STANOWISKA WHERE NR_STANOWISKA =" + args[0];
+		Position position = jdbcTemplate.queryForObject(sql, BeanPropertyRowMapper.newInstance(Position.class));
+		return position;
 	}
+
 
 	/* (U)pdate */
 	public void update(Position position) {
+		String sql = "UPDATE STANOWISKA SET  nazwa_stanowiska=:nazwa_stanowiska, opis=:opis WHERE nr_stanowiska=:nr_stanowiska";
+		BeanPropertySqlParameterSource param = new BeanPropertySqlParameterSource(position);
+		NamedParameterJdbcTemplate template = new NamedParameterJdbcTemplate(jdbcTemplate);
+		template.update(sql,param);
 
 	}
 
-	/* (D)elete */
-	public void delete(int id) {
+
+	/* (D)delete */
+	public void delete(int nr_stanowiska) {
+		String sql = "DELETE FROM STANOWISKA WHERE NR_STANOWISKA =?";
+		jdbcTemplate.update(sql, nr_stanowiska);
 
 	}
 }
