@@ -87,6 +87,8 @@ border-color:chartreuse;
 					<td th:text="${watertank.ilosc_miejsc}">Ilosc_miejsc</td>
 					<td th:text="${watertank.nr_atrakcji}">Nr_atrakcji</td>
 					<td th:text="${watertank.nr_oceanarium}">Nr_oceanarium</td>
+					<td><a th:href="@{'/edit_watertank/'+${watertank.nr_zbiornika}}">Edit</a>&nbsp;&nbsp;&nbsp;&nbsp;
+						<a th:href="@{'/deleteWaterTank/'+${watertank.nr_zbiornika}}">Delete</a></td>
 					
 					
 
