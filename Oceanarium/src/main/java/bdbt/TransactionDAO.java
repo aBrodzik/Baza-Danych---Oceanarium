@@ -39,17 +39,24 @@ public class TransactionDAO {
 	}
 
 	/* (R)ead */
-	public Transaction get(int id) {
-		return null;
+	public Transaction get(int p, int z) {
+		Object[] args = {p,z};
+		String sql = "SELECT * FROM TRANSAKCJE WHERE NR_KLIENTA=" + args[0] +" AND NR_REALIZACJI=" + args[1]+" FETCH NEXT 1 ROWS ONLY";
+		Transaction transaction = jdbcTemplate.queryForObject(sql, BeanPropertyRowMapper.newInstance(Transaction.class));
+		return transaction;
 	}
 
 	/* (U)pdate */
-	public void update(Transaction transaction) {
-
+	public void update(Transaction transaction, int z) {
+		String sql = "UPDATE TRANSAKCJE SET nr_klienta=:nr_klienta, data_zakupu=TO_DATE(:data_zakupu,'yyyy-mm-dd HH24:MI:SS'), czy_faktura=:czy_faktura WHERE nr_realizacji=:nr_realizacji";
+		BeanPropertySqlParameterSource param = new BeanPropertySqlParameterSource(transaction);
+		NamedParameterJdbcTemplate template = new NamedParameterJdbcTemplate(jdbcTemplate);
+		template.update(sql,param);
 	}
 
-	/* (D)elete */
-	public void delete(int id) {
-
+	/* (D)delete */
+	public void delete(int nr_klienta, int nr_realizacji) {
+		String sql = "DELETE FROM TRANSAKCJE WHERE NR_KLIENTA =? AND NR_REALIZACJI=?";
+		jdbcTemplate.update(sql,nr_klienta,nr_realizacji);
 	}
 }
