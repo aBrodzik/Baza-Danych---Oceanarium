@@ -48,12 +48,31 @@ public class AppController {
 	private WaterTankImplementationDAO daoWaterTankImplementation;
 	@Autowired
 	private AnimalDAO daoAnimal;
+	@Autowired
+	private AcctSalaryDao daoAcctSalary;
+	@Autowired
+	private AcctTransactionDAO daoAcctTransaction;
 
 	@RequestMapping("/")
 	public String viewHomePage() {
+		return "menu";
+
+	}
+	
+	@RequestMapping("/index")
+	public String viewOwner() {
 		return "index";
 
 	}
+	
+	@RequestMapping("/ksiegowy")
+	public String viewAccountant() {
+		return "indexAcct";
+
+	}
+	
+	
+	
 
 	/* Adresy */
 
@@ -434,6 +453,31 @@ public class AppController {
 		
 		return "redirect:/";
 	}
+	
+	
+	/* perspektywa ksiêgowego */
+	@RequestMapping("/ksiegowyWynagrozenia")
+	public String viewAcctSalary(Model model) {
+
+		List<AcctSalary> listAcctSalary = daoAcctSalary.list();
+		model.addAttribute("listAcctSalary", listAcctSalary);
+		return "ksiegowyWynagrodzenia";
+
+	}
+	
+	/* perspektywa ksiêgowego */
+	@RequestMapping("/ksiegowyTransakcje")
+	public String viewAcctTransaction(Model model) {
+
+		List<AcctTransaction> listAcctTransaction = daoAcctTransaction.list();
+		model.addAttribute("listAcctTransaction", listAcctTransaction);
+		return "ksiegowyTransakcje";
+
+	}
+	
+	
+	
+	
 
 	/* Pracownicy */
 	@RequestMapping("/pracownicy")

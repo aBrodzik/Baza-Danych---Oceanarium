@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/html"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<link
+	href="https://fonts.googleapis.com/css2?family=Oswald&display=swap"
+	rel="stylesheet">
+
+<title>Select User</title>
+<style>
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+html {
+	font-size: 20px;
+	font-family: 'Oswald', sans-serif;
+}
+
+div {
+	text-align: center;
+}
+
+nav a {
+	display: inline-block;
+	text-decoration: none;
+	font-size: 1rem;
+	color: #555;
+	text-transform: uppercase;
+	padding: 10px 10px;
+	transition: 0.2s;
+	overflow: hidden;
+}
+
+a {
+	text-decoration: none;
+	color: #555;
+	border: 3px solid brown;
+	border-radius: 7px;
+	position: relative;
+	margin-left: 12px;
+	margin-right: 12px;
+	margin-top: 10px;
+}
+
+a:before {
+	content: "";
+	background-color: rgba(255, 255, 255, 0.5);
+	height: 100%;
+	width: 40px;
+	display: block;
+	position: absolute;
+	top: 0;
+	left: -70px;
+	transform: skewX(-45deg) translateX(0px);
+	transition: none;
+}
+
+a:hover {
+	background-color: brown;
+	color: #fff;
+	border-bottom: 3px solid brown;
+}
+
+a:hover:before {
+	transform: skewX(-45deg) translateX(250px);
+	transition: all 0.4s ease-in;
+}
+
+.btnx:hover:before {
+	transform: skewX(-45deg) translateX(350px);
+}
+
+.btnx1:hover:before {
+	transform: skewX(-45deg) translateX(370px);
+}
+
+
+h1 {
+	text-transform: uppercase;
+	margin-bottom: 30px;
+	margin-top: 30px;
+}
+</style>
+</head>
+
+<body>
+
+	<div class="wrapper">
+		<!-- Page header -->
+		<h1>Choose</h1>
+
+		<nav>
+			<!-- Entry to a new page -->
+			<a href="/index"> Manager</a>
+			
+			<a href="/ksiegowy"> Accountant</a>
+			
+			<a href="/pracownik"> Employee</a>
+			
+			
+
+		
+		</nav>
+
+
+
+
+
+	</div>
+
+</body>
+</html>

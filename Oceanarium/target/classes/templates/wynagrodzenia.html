@@ -4,6 +4,48 @@
 <head>
 <meta charset="UTF-8">
 <title>Payment Manager App</title>
+<style>
+
+a {
+	margin-top: 10px;
+	margin-bottom: 10px; border-radius : 50%;
+	color: black;
+	font-family: arial;
+	border: 1px solid black;
+	text-align: center;
+	padding: 10px;
+	text-decoration: none;
+	border-radius: 50%;
+}
+
+a:hover {
+	color: chartreuse;
+	border-color: chartreuse;
+}
+
+.btn14 {
+border-radius:0;
+box-sizing: border-box;
+display:block;
+color:black;
+font-size: 18px;
+font-family:arial;
+text-decoration:none;
+border: 1px solid black;
+padding:10px;
+text-align:center;
+width:180px;}
+
+
+.btn14:hover {
+
+color:chartreuse;
+border-color:chartreuse;
+
+
+}
+
+</style>
 </head>
 <body>
 
@@ -13,10 +55,10 @@
 
 
 		<!-- Entry to a new page -->
-		<a href="/newPayment">Enter new payment</a>
+		<a href="/newPayment" class="btn14">Enter new payment</a>
 
 		<!-- Table -->
-		<table border="1" cellpadding="10">
+		<table border="1" cellpadding="12">
 
 			<!-- Table header -->
 			<thead>
@@ -41,6 +83,8 @@
 					<td th:text="${payment.kwota_pod}">Kwota_pod</td>
 					<td th:text="${payment.kwota_dod}">Kwota_dod</td>
 					<td th:text="${payment.nr_pracownika}">Nr_pracownika</td>
+					<td><a th:href="@{'/edit_payment/'+${payment.nr_wynagrodzenia}}">Edit</a>&nbsp;&nbsp;&nbsp;&nbsp;
+						<a th:href="@{'/deletePayment/'+${payment.nr_wynagrodzenia}}">Delete</a></td>
 					
 					
 

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/html"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Edit Implementation</title>
+</head>
+<body>
+	<div align="center">
+		<!-- Page header -->
+		<h1>Edit Implementation</h1>
+
+		<!-- End line/new line -->
+		<br />
+
+		<form action="#" th:action="@{/updateImplementation}" th:object="${implementation}"
+			method="post">
+			<!-- Table -->
+
+			<table border="1" cellpadding="10">
+				<!-- Table row -->
+
+				<tr>
+					<td>Nr_realizacji:</td>
+					<td><input type="text" th:field="*{nr_realizacji}"
+						readonly="readonly"></td>
+				</tr>
+
+				<!-- Table (second) row -->
+				<tr>
+					<td>Cena:</td>
+					<td><input type="text" th:field="*{cena}"></td>
+				</tr>
+
+				<!-- Table (third) row -->
+				<tr>
+					<td>Data:</td>
+					<td><input type="text" th:field="*{data}"></td>
+				</tr>
+
+				<!-- Table (fourth) row -->
+				<tr>
+					<td>Nr_atrakcji:</td>
+					<td><input type="text" th:field="*{nr_atrakcji}"></td>
+				</tr>
+				
+
+				<!-- Button for save -->
+
+				<tr>
+					
+					<td colspan="2"><button type="submit">Save</button></td>
+				</tr>
+
+
+			</table>
+
+		</form>
+
+	</div>
+</body>
+</html>

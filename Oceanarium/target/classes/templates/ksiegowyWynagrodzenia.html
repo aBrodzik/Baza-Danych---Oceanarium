@@ -3,7 +3,7 @@
 	xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8">
-<title>Adresses Manager App</title>
+<title>Wynagrodzenia pracowników </title>
 <style>
 a {
 	margin-top: 10px;
@@ -47,11 +47,8 @@ a:hover {
 
 	<div align="center">
 		<!-- Page header -->
-		<h1>Adresses</h1>
-
-
-		<!-- Entry to a new page -->
-		<a href="/newAdress" class="button1">Enter new sale</a> <br /> <br />
+		<h1>Wynagrodzenia pracownikow</h1>
+		
 
 		<!-- Table -->
 		<table border="1" cellpadding="12">
@@ -59,11 +56,13 @@ a:hover {
 			<!-- Table header -->
 			<thead>
 				<tr>
-					<th>Nr_adresu</th>
-					<th>Miasto</th>
-					<th>Ulica</th>
-					<th>Nr_lokalu</th>
-					<th>Nr_poczty</th>
+					<th>Nr_pracownika</th>
+					<th>imie</th>
+					<th>nazwisko</th>
+					<th>data_wynagrodzenia</th>
+					<th>kwota_pod</th>
+					<th>kwota_dod</th>
+					<th>nazwa_stanowiska</th>
 					<th>Akcja</th>
 				</tr>
 			</thead>
@@ -71,14 +70,14 @@ a:hover {
 			<!-- Table body -->
 			<tbody>
 
-				<tr th:each="adress:${listAdress}">
-					<td th:text="${adress.nr_adresu}">Nr_adresu</td>
-					<td th:text="${adress.miasto}">Miasto</td>
-					<td th:text="${adress.ulica}">Ulica</td>
-					<td th:text="${adress.nr_lokalu}">Nr_lokalu</td>
-					<td th:text="${adress.nr_poczty}">Nr_poczty</td>
-					<td><a th:href="@{'/edit_adress/'+${adress.nr_adresu}}">Edit</a>
-					&nbsp;&nbsp;&nbsp;&nbsp; <a th:href="@{'/deleteAdress/'+${adress.nr_adresu}}">Delete</a></td>
+				<tr th:each="acctSalary:${listAcctSalary}">
+					<td th:text="${acctSalary.nr_pracownika}">Nr_pracownika</td>
+					<td th:text="${acctSalary.imie}">imie</td>
+					<td th:text="${acctSalary.nazwisko}">nazwisko</td>
+					<td th:text="${acctSalary.data_wynagrodzenia}">data_wynagrodzenia</td>
+					<td th:text="${acctSalary.kwota_pod}">kwota_pod</td>
+					<td th:text="${acctSalary.kwota_dod}">kwota_dod</td>
+					<td th:text="${acctSalary.nazwa_stanowiska}">nazwa_stanowiska</td>
 				</tr>
 
 			</tbody>
