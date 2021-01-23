@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+
+<html lang="pl">
+
+<head>
+
+<meta charset="UTF-8">
+
+<title>Document</title>
+
+<style>
+.a {
+width:250px;
+height: 30px;
+border: 1px solid black;
+color: black;
+padding: 4px;
+font-size: 16px;
+font-weight: 400;
+border-radius: 2px;
+
+}
+
+.b {
+width: 250px;
+height: 30px;
+border: 1px solid black;
+color: black;
+padding: 4px;
+font-size: 16px;
+}
+
+.c {
+width: 500px;
+height: 35px;
+border: 1px solid black;
+color: black;
+padding: 6px;
+font-size: 16px;
+margin-top: 10px;
+}
+	
+
+</style>
+
+</head>
+
+
+
+<body oncontextmenu="return false">
+
+
+
+
+
+	<form name="login">
+
+		<div class="login">
+
+			<input class="a" type="text" placeholder="Nazwisko" name="userid"><br>
+
+			<input class="b" type="password" placeholder="Pesel" name="psword"><br>
+
+			<input class="c" type="button" onclick="check(this.form)" value="login" />
+
+		</div>
+
+
+
+	</form>
+
+	<script language="javascript">
+		function check(form) {
+
+			if (form.userid.value == "Krol" && form.psword.value == "03156758123") {
+
+				window.open("/loginpracownik2")
+
+			} 
+			else if (form.userid.value == "Krawczykowski" && form.psword.value == "12356754323") {
+
+				window.open("/loginpracownik1")
+
+			} 
+			
+			
+			else {
+
+				alert("Wprowadzone dane logowania są nieprawidłowe")
+
+			}
+
+		}
+	</script>
+
+
+
+
+
+</body>
+
+</html>
