@@ -52,6 +52,10 @@ public class AppController {
 	private AcctSalaryDao daoAcctSalary;
 	@Autowired
 	private AcctTransactionDAO daoAcctTransaction;
+	@Autowired
+	private EmployeeDAOlogin daoEmployeelogin;
+	@Autowired
+	private EmployeeDAOlogin2 daoEmployeelogin2;
 
 	@RequestMapping("/")
 	public String viewHomePage() {
@@ -70,8 +74,31 @@ public class AppController {
 		return "indexAcct";
 
 	}
+
+	@RequestMapping("/pracownik")
+	public String viewEmployee() {
+		return "login";
+
+	}
 	
-	
+	/* perspektywa pracownika1 */
+	@RequestMapping("/loginpracownik1")
+	public String viewEmployeelogin(Model model) {
+
+		List<Employeelogin> listEmployeelogin = daoEmployeelogin.list();
+		model.addAttribute("listEmployeelogin", listEmployeelogin);
+		return "loginpracownik1";
+
+	}
+	/* perspektywa pracownika2 */
+	@RequestMapping("/loginpracownik2")
+	public String viewEmployeelogin2(Model model) {
+
+		List<Employeelogin2> listEmployeelogin2 = daoEmployeelogin2.list();
+		model.addAttribute("listEmployeelogin2", listEmployeelogin2);
+		return "loginpracownik2";
+
+	}
 	
 
 	/* Adresy */
@@ -455,7 +482,7 @@ public class AppController {
 	}
 	
 	
-	/* perspektywa ksiêgowego */
+	/* perspektywa ksigowego */
 	@RequestMapping("/ksiegowyWynagrozenia")
 	public String viewAcctSalary(Model model) {
 
@@ -465,7 +492,7 @@ public class AppController {
 
 	}
 	
-	/* perspektywa ksiêgowego */
+	/* perspektywa ksigowego */
 	@RequestMapping("/ksiegowyTransakcje")
 	public String viewAcctTransaction(Model model) {
 
