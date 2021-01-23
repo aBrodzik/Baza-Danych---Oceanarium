@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/html"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Employee Manager App</title>
+
+
+
+</head>
+<body>
+
+	<div align="center">
+		<!-- Page header -->
+		<h1>Employees</h1>
+
+
+		
+
+		<!-- Break line -->
+		<br />
+		<br />
+
+		<!-- Table -->
+		<table border="1" cellpadding="12">
+
+			<!-- Table header -->
+			<thead>
+				<tr>
+					<th>Nr_pracownika</th>
+					<th>Imie</th>
+					<th>Nazwisko</th>
+					<th>Data_urodzenia</th>
+					<th>Pesel</th>
+					<th>Nr_oceanarium</th>
+					<th>Nr_adresu</th>
+					<th>Nr_stanowiska</th>
+					<th>Akcja</th>
+				</tr>
+			</thead>
+
+			<!-- Table body -->
+			<tbody>
+
+				<tr th:each="employeelogin2:${listEmployeelogin2}">
+					<td th:text="${employeelogin2.nr_pracownika}">Nr_pracownika</td>
+					<td th:text="${employeelogin2.imie}">Imie</td>
+					<td th:text="${employeelogin2.nazwisko}">Nazwisko</td>
+					<td th:text="${employeelogin2.data_urodzenia}">Data_urodzenia</td>
+					<td th:text="${employeelogin2.pesel}">Pesel</td>
+					<td th:text="${employeelogin2.nr_oceanarium}">Nr_oceanarium</td>
+					<td th:text="${employeelogin2.nr_adresu}">Nr_adresu</td>
+					<td th:text="${employeelogin2.nr_stanowiska}">Nr_stanowiska</td>
+
+					
+
+
+
+				</tr>
+
+			</tbody>
+
+
+
+		</table>
+
+
+
+
+
+	</div>
+
+</body>
+</html>
